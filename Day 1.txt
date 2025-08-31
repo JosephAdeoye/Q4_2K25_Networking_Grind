@@ -1,0 +1,4 @@
+Day 1
+## OSI Model
+I am reviewing the Open Systems Interconnection Model first. The OSI Model is a 7 layer framework that standardizes how computers communicate with each other over a network.
+A layer serves the layer above it and is served by the layer below it 
