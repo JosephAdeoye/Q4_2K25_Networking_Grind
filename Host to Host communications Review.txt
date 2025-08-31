@@ -1,0 +1,71 @@
+Day 1
+## OSI Model
+I am reviewing the Open Systems Interconnection Model first. The OSI Model is a 7 layer framework that standardizes how computers communicate with each other over a network.
+A layer serves the layer above it and is served by the layer below it 
+The layers are;
+1. Application layer L7
+2. Presentation layer L6
+3. Session layer L5
+4. Transport layer (TCP/UDP, Port(HTTP-80, SMTP-25, etc)) L4
+5. Network layer (Source and Destination IP addresses) L3 - ROUTERS
+6. Data Link layer (Source and Destination MAC Addresses) L2 - SWITCHES
+7. Physical layer
+
+## TCP/IP SUITE
+The TCP/IP suite was developed in the 1960 by the US DoD, Advanced Research Projects Agency (ARPA)
+It is a protocol stack that consist of multiple protocols including TCP and IP
+It is the main protocol stack used in computer operations today 
+TCP/IP is also layered but it does not use all the layers in the OSI model
+TCP/IP layers
+1. Application layer (encapsulates the Application, Presentation, and Session layers of the OSI Model)
+2. Transport layer (is also the transport layer in the OSI Model)
+3. Intenet layer (is the network layer of the OSI Model)
+4. Link layer (encapsulates the Data Link and Physical layers)
+
+Acronym for TCP/IP - Lieing Is Pretty Awful
+
+## Host to Host communication terminologies 
+When two hosts communicate with each other, they exchange Protocol Data Units(PDUs)
+# PDUs name per layer
+1. Application layer - Data
+2. Transport layer - Segment
+3. Intenet layer - Packet
+4. Link layer - Frame
+
+## L7 - Application layer
+This layer provides network services to the applications of the user
+The layer establishes the availability of intended communication partners.
+It then synchronizes and establishes agreement on procedures for error recovery and control data integrity.
+
+## L6 - Presentation layer
+This layer ensures that the information that is sent at the application layer of one system is readable by the application layer of another system.
+This layer can translate among multiple data formats using a common format (e.g computers with different encoding schemes)
+
+## L5 - Session layer
+This layer establishes, manages, and terminates sessions between communicating hosts
+This layer also synchronizes dialog between the Presentation layers of the two hosts and manages their data exchange
+For example, web servers have many users, so there are many communication processes open at any given time to track
+It also efficient data transfer, CoS and exception reporting of upper layer problems
+
+## L4 - Transport layer
+The main characteristics of the Transport layer are whether TCP or UDP transport is used, and the port number
+The transport layer defines services to segment, transfer, and reassemble the data for individual communications between the end devices
+It breaks down large files into smaller segments that are less likely to incur transmission problems
+
+## L3 - Network layer
+The most important information at the network layer is the Source and Destination IP addresses
+Routers and L3 switches operate at the Layer 3
+The network layer provides connectivity and path selection between two hosts that may be located on geographically separated networks.
+This layer manages the connectivity of hosts by providing logical addressing (IP Addresses)
+
+## L2 Data layer
+The most important information at this layer is the Source and Destination MAC addresses
+Switches operate at L2
+This layer defines how data is formatted for transmission and how access to the Physical media is controlled
+It also typically includes error detection and correction to ensure a reliable delivery of the data
+
+## L1 Physical layer
+This layer concerns itself with the Physical components of the network, for example the cables being used.
+The Physical link enables bit transmission between end devices
+It defines specifications needed for activating and maintaining, and deactivating the physical link between end devices. E.g voltage levels, physical data rates, maximum transmission distances, physical connectors, etc.
+
