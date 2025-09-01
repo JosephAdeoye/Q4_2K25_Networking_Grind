@@ -21,6 +21,8 @@ This repository documents my preparation for the Cisco Certified Network Associa
 # Repository Structure
 
 Q4_2K25_Networking_Grind/
+
+
 │
 ├── notes/         # Study notes, summaries, and concept reviews  
 ├── labs/          # Lab exercises, topologies, and configurations  
@@ -30,6 +32,6 @@ Q4_2K25_Networking_Grind/
 
 
 # Goal
-  
+
 My primary goal is to **successfully pass the CCNA certification exam** in Q4 2025.  
 At the same time, this journey is also about **deepening my theoretical understanding** of networking fundamentals and **strengthening my practical skills** through consistent hands-on labs and real-world configurations.
