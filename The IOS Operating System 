@@ -1,0 +1,140 @@
+The Cisco Nexus and MDS data center switch product lines run on NX-OS.
+The IOS-XR operating system runs on the service provider NCS, CRS, ASR9000 and XR12000 series routers.
+IOS-XE runs on the ASR1000 series service provider routers.
+The command line interfaces for the other operating systems are nearly identical to IOS.
+
+In-band management: Accessing and managing a device through the same network it serves (e.g., SSH, Telnet).
+Out-of-band management: Accessing and managing a device through a dedicated channel/interface separate from the production network (e.g., console port, management port).
+Key difference: In-band relies on the production network being up, while out-of-band works independently even if the network is down.
+
+CISCO IOS CLI BASICS
+
+1. User Modes
+
+| Prompt Example         | Mode                          | Description                                                                |
+| ---------------------- | ----------------------------- | -------------------------------------------------------------------------- |
+| `hostname>`            | **User EXEC mode**            | Limited access; basic monitoring commands only.                            |
+| `hostname#`            | **Privileged EXEC mode**      | Access to all commands; entered with `enable`.                             |
+| `hostname(config)#`    | **Global Configuration mode** | Used to configure system-wide settings; entered with `configure terminal`. |
+| `hostname(config-if)#` | **Interface Configuration**   | Used to configure a specific interface (e.g., Ethernet, Serial).           |
+
+2. Command Abbreviation
+
+Cisco IOS allows you to type shortened commands if the abbreviation is unique.
+
+Example:
+
+en → enable
+
+conf t → configure terminal
+
+3. Context-Sensitive Help (?)
+
+Use ? at any point to see available commands or options.
+
+Examples:
+
+sh? → shows all commands starting with "sh".
+
+show ? → lists all options for the show command.
+
+show ip ? → lists options for the show ip subcommands.
+
+4. Editing & Navigation Shortcuts
+
+Backspace → deletes the previous character.
+
+Arrow Keys → move the cursor left/right (one character).
+
+Ctrl + A → moves cursor to the beginning of the line.
+
+Ctrl + E → moves cursor to the end of the line.
+
+Ctrl + U → deletes the entire line.
+
+Ctrl + W → deletes the word to the left of the cursor.
+
+Tab → auto-completes a command (if unambiguous).
+
+5. Useful IOS Tips
+
+History Navigation:
+
+Use the Up/Down arrows to scroll through previously entered commands.
+
+Configure history size with:
+
+terminal history size <number>
+
+Command Recall: Use Ctrl + P (previous) and Ctrl + N (next) as alternatives to arrow keys.
+
+Saving Configurations:
+
+write memory or copy running-config startup-config → saves current running config to NVRAM.
+
+Viewing Configurations:
+
+show running-config → shows active configuration.
+
+show startup-config → shows configuration stored in NVRAM.
+
+Moving Between Interfaces (IOS)
+
+Jump directly to another interface (no need to exit):
+interface GigabitEthernet0/2
+
+Return to global config from an interface:
+exit
+
+Switch to a Switched Virtual Interface (SVI):
+interface vlan 10
+
+Create/use a loopback:
+interface loopback 0
+
+Configure many at once:
+interface range g0/1 - 4
+interface range f0/1 , f0/3 - 5
+
+Quickly see names/status while in config mode:
+do show ip interface brief
+
+## Command History  
+- The **Up (↑)** and **Down (↓)** arrow keys cycle through previously entered commands at the same mode/level.  
+
+  ## Showing Command Output  
+- **Enter (↵)** → scrolls through `show` command output **one line at a time**.  
+- **Spacebar** → scrolls through output **one page at a time**.  
+- **Ctrl + C** → stops the command output and returns immediately to the command prompt.  
+- **Ctrl + Z** → can also interrupt some processes and return to privileged EXEC mode.  
+
+## Piped Command Examples  
+
+The pipe (`|`) symbol filters command output to make it easier to read.  
+
+- `show running-config interface FastEthernet0/0`  
+  → Displays only the configuration for **FastEthernet0/0**.  
+
+- `show running-config | begin FastEthernet0/0`  
+  → Shows the config **starting from** the first line that matches `FastEthernet0/0`.  
+
+- `show running-config | include FastEthernet0/0`  
+  → Shows only lines that **contain** `FastEthernet0/0`.  
+
+- `show running-config | exclude FastEthernet0/0`  
+  → Shows all lines **except** those containing `FastEthernet0/0`.  
+
+- `show running-config | section interface`  
+  → Displays entire **sections** of the config that begin with the word `interface`.  
+
+## Configuration Storage Locations  
+- **Flash** → Stores the **IOS operating system image**.  
+- **NVRAM** → Stores the **Startup Configuration** (persistent config loaded at boot).  
+- **RAM** → Holds the **Running Configuration** (active config currently in use, loaded from startup config at boot).  
+
+---
+
+## Saving the Configuration  
+- All commands take effect **immediately** but are **not saved** after a reboot unless written to NVRAM.  
+- **Save running config to startup config (make persistent):**  
+
