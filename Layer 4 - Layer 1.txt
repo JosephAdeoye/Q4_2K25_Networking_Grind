@@ -1,0 +1,6 @@
+Layer 4 - The Transport Layer
+    - The transport layer provides transparent transfer of data between hosts and is responsible for end to end error recovery and flow control.
+    - Flow control is the process of adjusting the flow of data from the sender to ensure that the receiving host can handle all of it.
+
+# Session Multiplexing
+    - Session Multiplexing is the process by which a host is able to support multiple sessions simultaneously and manager the individual traffic streams over a single link, 
