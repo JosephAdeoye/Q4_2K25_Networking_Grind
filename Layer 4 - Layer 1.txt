@@ -3,4 +3,82 @@ Layer 4 - The Transport Layer
     - Flow control is the process of adjusting the flow of data from the sender to ensure that the receiving host can handle all of it.
 
 # Session Multiplexing
-    - Session Multiplexing is the process by which a host is able to support multiple sessions simultaneously and manager the individual traffic streams over a single link, 
+    - Session Multiplexing is the process by which a host is able to support multiple sessions simultaneously and manager the individual traffic streams over a single link.
+
+# Layer 4 Port Numbers  
+    - The Layer 4 destination port number is used to identify the upper layer protocol.
+    - For example, HTTP uses port 80, SMTP email uses port 25.
+    - The sender also adds a source port number to the Layer 4 header.
+    - The combination of source and destination port number can be used to track sessions. E.g DST: 80 SRC: 1500
+
+# TCP
+    - TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are the most common Layer 4 protocols. 
+    - TCP is connection oriented - once a connection is established, data can be sent bidirectionally over that connection.
+    - TCP carries out sequencing to ensure segments are processed in the correct order and none are missing.
+    - TCP is reliable - the receiving host sends acknowledgments back to the sender. Lost segments are resent.
+    - TCP performs flow control.
+
+# TCP Three-Way Handshake
+    - SYN (Synchronize)
+    - SYN-ACK (Synchronize - Acknowledgement)
+    - ACK (Acknowledgement)
+
+## TCP Header Format  
+
+    The TCP header contains several fields used for reliable, connection-oriented communication.  
+
+
+### Field Explanations (Brief)
+    - **Source Port / Destination Port** → Identify sending and receiving applications.  
+    - **Sequence Number** → Tracks the position of data in the stream.  
+    - **Acknowledgment Number** → Confirms receipt of data.  
+    - **Data Offset** → Size of the TCP header.  
+    - **Reserved** → Reserved for future use (set to 0).  
+    - **Control Flags** → 6 bits: URG, ACK, PSH, RST, SYN, FIN (used to control connections).  
+    - **Window Size** → Flow control; how much data can be sent before requiring acknowledgment.  
+    - **Checksum** → Error-checking for header and data.  
+    - **Urgent Pointer** → Marks urgent data (used with URG flag).  
+    - **Options** → Extra settings (e.g., Maximum Segment Size).  
+    - **Data** → The actual payload (application data).  
+---
+# UDP
+    - The User Datagram Protocol sends traffic best effort.
+    - UDP is not connection oriented. There is no handshake connection setup between the hosts.
+    - UDP does not carry out sequencing to ensure segments are processed in the correct order and none are missing.
+    - UDP is not reliable - the receiving host does not send acknowledgments back to the sender.
+    - UDP does not perform flow control
+    - If error detection and recovery is required it is up to the upper layers to provide it.
+
+## UDP Header Format  
+
+The UDP header is much simpler than TCP, providing basic connectionless communication.  
+
+
+### Field Explanations (Brief)
+- **Source Port / Destination Port** → Identify sending and receiving applications.  
+- **Length** → Total length of the UDP header and data (in bytes).  
+- **Checksum** → Error-checking for header and data (optional in IPv4, mandatory in IPv6).  
+- **Data** → The actual payload (application data).  
+
+---
+
+- **TCP** → Complex, reliable, connection-oriented, with sequencing/acknowledgments.  
+- **UDP** → Simple, fast, connectionless, with minimal overhead.  
+
+# TCP vs UDP
+    - Application developers will typically choose to use TCP for traffic which requires reliability.
+    - Real-time applications such as voice and video can't afford the extra overhead of TCP so they can use UDP,
+    - Some applications can use both TCP and UDP.
+
+# Common applications and their destination protocols
+    # TCP
+        - FTP (21)
+        - SSH (22)
+        - TELNET (23)
+        - HTTP (80)
+        - HTTPS (443)
+    # UDP
+        - TFTP (69)
+        - SNMP (161)
+    # TCP & UDP 
+        - DNS (53)
