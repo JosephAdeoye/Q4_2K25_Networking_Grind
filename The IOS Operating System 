@@ -138,3 +138,4 @@ The pipe (`|`) symbol filters command output to make it easier to read.
 - All commands take effect **immediately** but are **not saved** after a reboot unless written to NVRAM.  
 - **Save running config to startup config (make persistent):**  
 
+
