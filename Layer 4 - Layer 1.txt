@@ -82,3 +82,42 @@ The UDP header is much simpler than TCP, providing basic connectionless communic
         - SNMP (161)
     # TCP & UDP 
         - DNS (53)
+
+# Layer 3 - The Network Layer
+    - The Network layer is responsible for routing packets to their destination and for quality of service.
+    - IP (Internet Protocol) is the best known layer 3 protocol.
+    - It is a connectionless protocol with no acknowledgments at Layer 3.
+    - Other Layer 3 protocols include ICMP (Internet Control Message Protocol) and IPSec.
+
+# IP Addressing
+    - IP Addressing is a logical addressing scheme which is implemented at Layer 3
+    - The Network designer uses IP addressing to partition the overall network into smaller 'subnets'.
+    - This improves performance and security and makes troubleshooting easier.
+    - Layer 2 MAC address use one big flat addressing scheme. There is no logical separation between networks at Layer 2, it is done at Layer 3.
+
+## IPv4 Header Format  
+
+    The IPv4 header contains fields used for addressing, routing, and delivering packets.  
+
+
+### Field Explanations (Brief)  
+    - **Version (4 bits)** → IP version (always `4` for IPv4).  
+    - **Header Length (IHL, 4 bits)** → Length of the IPv4 header in 32-bit words.  
+    - **Type of Service (TOS, 8 bits)** → Originally for service priority; now often split into **DSCP** (QoS) and **ECN** (congestion control).  
+    - **Total Length (16 bits)** → Entire packet size in bytes (header + data).  
+    - **Identification (16 bits)** → Unique value for fragment reassembly.  
+    - **Flags (3 bits)** → Control fragmentation (e.g., DF = Don’t Fragment, MF = More Fragments).  
+    - **Fragment Offset (13 bits)** → Position of this fragment in the original packet.  
+    - **Time to Live (TTL, 8 bits)** → Decremented by each router hop; prevents looping.  
+    - **Protocol (8 bits)** → Identifies the encapsulated protocol (e.g., 1 = ICMP, 6 = TCP, 17 = UDP).  
+    - **Header Checksum (16 bits)** → Error-checking for the IPv4 header.  
+    - **Source Address (32 bits)** → IPv4 address of the sender.  
+    - **Destination Address (32 bits)** → IPv4 address of the receiver.  
+    - **Options (variable, rarely used)** → Extra control features.  
+    - **Data (Payload)** → Encapsulated upper-layer data (TCP, UDP, ICMP, etc.).  
+
+    ---
+
+
+
+                
