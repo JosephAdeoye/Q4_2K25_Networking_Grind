@@ -236,3 +236,27 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
     - CLASS C | 192 - 223 | /24 | 255.255.255.0
     - CLASS D | 224 - 239
     - CLASS E | 240 - 255
+
+### OSI Layer 2
+    - Frames are encoded and decoded into bits at Layer 2.
+    - Error detection and correction for the physical layer can be provided here.
+    - Ethernet is the Layer 2 medium used on Local Area Networks.
+
+### The Ethernet Header 
+    - 
+### Field Explanations (Brief)  
+    - **Preamble (8 bytes)** → A sequence of alternating `1`s and `0`s used by NICs to **synchronize clocking** before frame transmission.  
+    - **Destination MAC Address (6 bytes)** → Layer 2 address of the intended receiver.  
+    - **Source MAC Address (6 bytes)** → Layer 2 address of the sender.  
+    - **EtherType (2 bytes)** → Identifies the payload (e.g., `0x0800` = IPv4, `0x86DD` = IPv6, `0x0806` = ARP).  
+    - **Payload(DATA) (46–1500 bytes)** → Encapsulated upper-layer data. If less than 46 bytes, padding is added.  
+    - **FCS (Frame Check Sequence, 32 bits)** → CRC value used to detect transmission errors.  
+
+---
+
+### The Media Access Control MAC Address
+    - Ethernet uses a 48-bit hexadecimal MAC Address
+    - The first 24 bits is the OUI (Organizationally Unique Identifier) which uniquely identifies the manufacturer of the Ethernet port. OUI is assigned by the IEEE.
+    - The last 24 bits is vendor assigned.
+    - The burned in MAC address on every NIC port in the world is globally unique.
+    - Example - 00:50:56:C0:00:08
