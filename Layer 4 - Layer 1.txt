@@ -118,6 +118,12 @@ The UDP header is much simpler than TCP, providing basic connectionless communic
 
     ---
 
+### Unicast, Broadcaast and Multicast traffic
+    - There are 3 main IP traffic types: unicast, broadcast and multicast.
+    - Unicast traffic is to a single destination host.
+    - Broadcaast traffic is to all hosts on the subnet.
+    - Multicast traaffic is to multiple interested hosts.
 
+ROUTERS DO NOT FORWARD BROADCAST TRAFFIC  
 
                 
