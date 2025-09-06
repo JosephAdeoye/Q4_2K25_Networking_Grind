@@ -126,4 +126,113 @@ The UDP header is much simpler than TCP, providing basic connectionless communic
 
 ROUTERS DO NOT FORWARD BROADCAST TRAFFIC  
 
-                
+### Subnet Size
+
+The number of hosts available in a subnet depends on how many bits are allocated to the **host portion** of the address.  
+- The **more host bits**, the **more available IP addresses**.  
+- The **fewer host bits**, the **fewer available IP addresses**.
+
+### Examples
+- **Subnet Mask: /8**  
+  - Network portion = 8 bits  
+  - Host portion = 24 bits  
+  - Number of host addresses = `2^24 - 2 = 16,777,214`  
+  - (Subtract 2 for network + broadcast)
+
+- **Subnet Mask: /24**  
+  - Network portion = 24 bits  
+  - Host portion = 8 bits  
+  - Number of host addresses = `2^8 - 2 = 254`
+
+### General Formula
+\[
+\text{Usable Hosts} = 2^{\text{host bits}} - 2
+\]
+
+The **`-2`** accounts for:  
+1. **Network Address** (all host bits = 0)  
+2. **Broadcast Address** (all host bits = 1)  
+
+## Class A IPv4 Addresses  
+
+The IPv4 address space was historically divided into **classes** (Class A, B, C, D, and E). While classful addressing is largely obsolete and replaced by **CIDR (Classless Inter-Domain Routing)**, it’s still useful for foundational understanding.  
+
+### Characteristics of Class A
+    - **First bit**: Always `0`  
+    - **Default subnet mask**: `/8` (255.0.0.0)  
+    - **Network range**: `1.0.0.0` to `126.0.0.0` (/8 networks)  
+    - **Number of possible Class A networks**: 126  
+    - **Hosts per network**: `2^24 - 2 = 16,777,214`  
+    - `-2` accounts for the **network** and **broadcast** addresses  
+
+### Notes
+- Designed for **very large organizations** needing millions of host addresses.  
+- Address `127.x.x.x` is reserved for **loopback testing**, not for host addressing.  
+
+### Quick Reference
+| Property              | Value                                  |
+|-----------------------|----------------------------------------|
+| First Octet Range     | 1 – 126                                |
+| Default Subnet Mask   | 255.0.0.0 (/8)                         |
+| Number of Networks    | 126                                    |
+| Hosts per Network     | 16,777,214                             |
+| Special Use           | 127.0.0.0/8 reserved for loopback      |
+    
+## Reserved Class A Addresses  
+
+Certain ranges within the **Class A space** are reserved and cannot be assigned to hosts.  
+
+### 0.0.0.0/8 — "This Network"  
+- Reserved to represent **“this network”** in routing and configuration.  
+- Range: `0.0.0.1` to `0.255.255.255` are not valid for assignment to hosts.  
+- `0.0.0.0` in routing tables represent the **default route**.  
+
+### 127.0.0.0/8 — Loopback  
+- Reserved for **loopback addresses** used to test the local computer’s TCP/IP stack.  
+- Range: `127.0.0.0` to `127.255.255.255`  
+- Commonly used address: `127.0.0.1` (local host / “localhost”).  
+- Not valid for assignment to physical network hosts.  
+
+### Key Point  
+These reservations remove **33,554,432 addresses** from the usable global IPv4 address pool.  
+
+### Class B IP Addresses
+    = Class B addresses are assigned to medium-sized to large-sized networks.
+    - The two high-order bits in a class B address are always set to binary 10.
+    - The default subnet mask is /16.
+    - Valid network addresses range from 128.0.0.0 to 191.255.0.0/16
+    - This allows for 16,384 neworks and 65534 hosts per network.
+
+### Class C IP Addresses
+    - Class C addresses are used for small networks
+    - The three high-order bits in a class C address are always set to binary 110.
+    - The defailt subnet mask is /24.
+    - Valid network addresses range from 192.0.0.0 to 223.255.255.0/24/
+    - This allows for 2097152 networks and 254 hosts per network.
+    
+### Note on Private Addresses
+    - There is a range of reserved Private Addresses in each class.
+    - These are valid to be assigned to hosts but they are not routable on the public internet.
+    - They were Originally designed for hosts in a closed private network with no Internet connectivity.
+    - CLASS A: 10.0.0.0 TO 10.255.255.255
+    - CLASS B: 172.16.0.0 TO 172.31.255.255
+    - CLASS C: 192.168.0.0 TO 192.168.255.255
+
+### CLASS D IP Address
+    - Class D addresses are reserved for IP multicast addresses.
+    - The four high-order bits in a class D address are always set to binary 1110
+    - These addresses are not allocated to hosts and there is no default subnet mask
+    - Valid addresses range from 224.0.0.0 to 239.255.255.255
+### CLASS E IP Address
+    - Class E addresses are 'experimental and reserved for future use'
+    - The high-order bits in a class E address are set to 1111
+    - These addresses are not allocated to hosts and there is no default subnet mask
+    - Addresses range from 240.0.0.0 to 255.255.255.255
+    - 255.255.255.255 is the broadcast address for 'this network'
+
+### IP Address Class Summary
+    - CLASS A | 1 - 126 | /8 | 255.0.0.0
+    - CLASS B | 128 - 191 | /16 | 255.255.0.0
+    - CLASS C | 192 - 223 | /24 | 255.255.255.0
+    - CLASS D | 224 - 239
+    - CLASS E | 240 - 255
