@@ -16,14 +16,14 @@ This repository documents my preparation for the Cisco Certified Network Associa
 
 ### Real Networking Devices – switches and routers for practical, hardware-based configuration.
 
-### Version Control (GitHub) – to track progress and organize study materials.
+### Version Control (GitHub) – to track progress and organise study materials.
 
 # Repository Structure
 
 Q4_2K25_Networking_Grind/
 
 
-│
+
 ├── notes/         # Study notes, summaries, and concept reviews  
 ├── labs/          # Lab exercises, topologies, and configurations  
 ├── configs/       # Device configuration files for reference  
