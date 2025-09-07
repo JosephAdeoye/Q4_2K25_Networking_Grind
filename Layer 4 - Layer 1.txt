@@ -212,8 +212,8 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
     
 ### Note on Private Addresses
     - There is a range of reserved Private Addresses in each class.
-    - These are valid to be assigned to hosts but they are not routable on the public internet.
-    - They were Originally designed for hosts in a closed private network with no Internet connectivity.
+    - These are valid to be assigned to hosts, but they are not routable on the public internet.
+    - They were originally designed for hosts in a closed private network with no Internet connectivity.
     - CLASS A: 10.0.0.0 TO 10.255.255.255
     - CLASS B: 172.16.0.0 TO 172.31.255.255
     - CLASS C: 192.168.0.0 TO 192.168.255.255
@@ -221,12 +221,12 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
 ### CLASS D IP Address
     - Class D addresses are reserved for IP multicast addresses.
     - The four high-order bits in a class D address are always set to binary 1110
-    - These addresses are not allocated to hosts and there is no default subnet mask
+    - These addresses are not allocated to hosts, and there is no default subnet mask
     - Valid addresses range from 224.0.0.0 to 239.255.255.255
 ### CLASS E IP Address
     - Class E addresses are 'experimental and reserved for future use'
     - The high-order bits in a class E address are set to 1111
-    - These addresses are not allocated to hosts and there is no default subnet mask
+    - These addresses are not allocated to hosts, and there is no default subnet mask
     - Addresses range from 240.0.0.0 to 255.255.255.255
     - 255.255.255.255 is the broadcast address for 'this network'
 
@@ -245,7 +245,7 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
 ### The Ethernet Header 
     - 
 ### Field Explanations (Brief)  
-    - **Preamble (8 bytes)** → A sequence of alternating `1`s and `0`s used by NICs to **synchronize clocking** before frame transmission.  
+    - **Preamble (8 bytes)** → A sequence of alternating `1`s and `0`s used by NICs to **synchronise clocking** before frame transmission.  
     - **Destination MAC Address (6 bytes)** → Layer 2 address of the intended receiver.  
     - **Source MAC Address (6 bytes)** → Layer 2 address of the sender.  
     - **EtherType (2 bytes)** → Identifies the payload (e.g., `0x0800` = IPv4, `0x86DD` = IPv6, `0x0806` = ARP).  
@@ -256,7 +256,8 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
 
 ### The Media Access Control MAC Address
     - Ethernet uses a 48-bit hexadecimal MAC Address
-    - The first 24 bits is the OUI (Organizationally Unique Identifier) which uniquely identifies the manufacturer of the Ethernet port. OUI is assigned by the IEEE.
+    - The first 24 bits is the OUI (Organizationally Unique Identifier), which uniquely identifies the manufacturer of the Ethernet port. OUI is assigned by the IEEE.
     - The last 24 bits is vendor assigned.
     - The burned in MAC address on every NIC port in the world is globally unique.
     - Example - 00:50:56:C0:00:08
+
