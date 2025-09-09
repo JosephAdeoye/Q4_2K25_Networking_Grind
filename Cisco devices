@@ -1,3 +1,34 @@
 # Hubs and Switches 
   - Hubs and switches perform a similar function.
-  - End hosts in a Local Area Network, such as PCs, servers and printers, plug into them with an Ethernet cable 
+  - End hosts in a Local Area Network, such as PCs, servers and printers, plug into them with an Ethernet cable.
+  - The end hosts can then communicate with each other through the hub or switch.
+
+# Switches vs Hubs
+  # HUBS #
+  - Hubs operate in half-duplex mode.
+  - Attached hosts cannot send and receive data at the same time; they can only do one or the other.
+  - All hosts share the same collision domain - only one device can transmit at a time.
+  - If two hosts send at the same time, a collision will occur.
+  - Hosts use Carrier-Sense Multiple Access with Collision Detection (CSMA/CD) to detect collisions and resend.
+
+ # SWITCHES #
+  - Switches can operate in either full-duplex or half-duplex mode.
+  - In practice, they always operate as full-duplex.
+  - Attached hosts can both send and receive data at the same time.
+  - All hosts have their own dedicated collision domain.
+  - Collision detection is not required.
+
+  # HUBS operate at OSI Layer 1
+  - Hubs operate at Layer 1 of the OSI model
+  - They are not MAC address aware
+  - Whenever a frame is received, it is flooded out on all ports apart from the one it was received on
+  - All attached hosts must process all packets.
+
+  # SWITCHES operate at Layer 2 of the OSI model #
+  - They are MAC address aware.
+  - Whenever a frame is received, the switch will look at the source MAC address in the Layer 2 Ethernet header.
+  - The learned MAC address will be added to the switch's MAC address table, which maps MAC addresses to ports.
+  - If a unicast frame is later received with a known MAC as the destination, the switch will send the frame out only the relevant port.
+  - This is better for performance and security as frames only go where they are required.
+  - Whenever a frame is received for the broadcast address or an unknown unicast destination (because the switch hasn't learned the MAC address yet), it will be flooded out all ports apart from the one it was received on.
+  
