@@ -1,0 +1,37 @@
+# The DOMAIN NAME SYSTEM #
+  - The Domain Name System (DNS) resolves a Fully Qualified Domain Name (FQDN) such as wwww. cisco.com to an IP address.
+  - Enterprises will typically have an internal DNS server, which can resolve the IP addresses of internal hosts.
+  - Hosts will send their DNS queries to this server.
+  - If the internal DNS server cannot resolve a query, it will forward the request out to public DNS servers on the internet.
+  - DNS requests are sent using UDP port 53 (and can fail over to TCP)
+
+# Router DNS Commands #
+  - DNS CLIENT:
+    ip domain-lookup
+    ip name-server 172.23.4.1
+    ip domain-name flackboxA.lab (primary domain name)
+    ip domain-list flackboxB.lab (additional DNS suffixes to search)
+  - ADDITIONAL DNS SERVER COMMANDS:
+    ip dns server
+    ip host LinuxA 172.23.4.2
+# THE REASON YOU WOULD WANT TO USE THE ABOVE IS YOU WANT THE ROUTER ITSELF TO BE ABLE TO RESOLVE FQDNs.
+# YOU DON'T NEED TO DO THIS IF YOU WANT DNS TO TRAVERSE THE ROUTER.
+
+# ADDRESS RESOLUTION PROTOCOL # 
+
+  # IP to MAC Address Resolution #
+  - The sender needs to know the receiver's IP address and MAC address to form the packet it's going to send.
+  - We can point the sender directly at the destination IP address or at a user-friendly FQDN such as www.cisco.com
+  - DNS Domain Name System maintains a mapping of FQDNs to IP addresses.
+  - ARP is used to map the IP address to the MAC address.
+
+  # HOST ARP Commands #
+  - ARP replies are saved in a host's ARP cache so it doesn't need to send an ARP request every time it wants to communicate.
+
+  # WINDOWS
+  - View ARP cache: arp -a
+  - Clear ARP cache: netsh interface ip delete arpcache
+
+  # Linux
+  - View ARP cache: arp -n
+  - Clear ARP cache: ip -s -s neigh flush all
