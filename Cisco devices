@@ -31,4 +31,32 @@
   - If a unicast frame is later received with a known MAC as the destination, the switch will send the frame out only the relevant port.
   - This is better for performance and security as frames only go where they are required.
   - Whenever a frame is received for the broadcast address or an unknown unicast destination (because the switch hasn't learned the MAC address yet), it will be flooded out all ports apart from the one it was received on.
-  
+
+  # ROUTERS #
+  - Routers know the paths to get to the different IP subnets on a network.
+  - They are required to send traffic from one subnet to another.
+  - Routers operate at Layer 3 of the OSI model.
+  - (They also operate at Layers 2 and 1, and will typically have awareness up to Layer 7)
+
+  # ROUTERS VS SWITCHES #
+  - Routers are L3 aware and can route traffic between different networks.
+  - Switches are L2 aware and can switch traffic between hosts on the LAN.
+  - Routers support many types of interfaces, such as Ethernet, Serial, ISDN, ADSL, etc
+  - Switches forward broadcast traffic, routers do not by default.
+
+  # Layer 3 Switches #
+  - Advanced switches are Layer 3 aware and can route traffic between different IP subnets.
+  - Layer 3 switches will still typically support only Ethernet interfaces and will have more ports than routers.
+
+  # Cisco Security devices #
+  - Cisco ASA (Adaptive Security Appliance) firewalls
+  - Cisco SourceFire FirePower IPS (Intrusion Prevention System)
+
+  # Cisco WLAN devices #
+  - Wireless LAN Controllers
+  - Wireless Access Points
+
+  # Cisco Collaboration devices #
+  - IP Phones
+  - Cisco WebEx
+  - Cisco Unified Communications Manager.
