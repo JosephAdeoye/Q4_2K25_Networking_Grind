@@ -9,3 +9,9 @@
   - The IP address and subnet mask is configured on the Switched Virtual Interface (SVI) for the default VLAN 1.
   - A default gateway also needs to be configured to allow connectivity to other subnets.
 ---- Interfaces are turned on by default on Switches.
+
+### Interface Speed and Duplex
+  - Interface speed and duplex is set to 'auto' by default
+  - Both sides of a link should auto-negotiate to full duplex and the fastest available speed.
+  - Best practice is to manually set the speed and duplex on ports which are connected to another network infrastructure device or server.
+  - It is very important to set matching speed and duplex settings on both sides of the link.
