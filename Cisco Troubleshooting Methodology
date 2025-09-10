@@ -1,1 +1,20 @@
+## Cisco Troubleshooting Methodology
+
+The Cisco troubleshooting process follows a structured flow:
+
+1. **Define Problem**  
+2. **Gather Information**  
+3. **Analyze Information**  
+4. **Eliminate Potential Causes**  
+5. **Propose Hypothesis**  
+6. **Test Hypothesis**  
+7. **Solve Problem and Document Solution**
+
+## Troubleshooting Methodologies
+
+There are three main approaches to network troubleshooting based on the **OSI model**:
+
+- **Top-Down**: Start from the Application layer and move downward toward the Physical layer.  
+- **Bottom-Up**: Start from the Physical layer and move upward toward the Application layer.  
+- **Divide and Conquer**: Begin testing at a middle layer (often Network or Transport) and then move up or down depending on results.  
 
