@@ -47,4 +47,32 @@
 Common Layer 1 problems include:
   - The interface is administratively shut down
   - The cable is disconnected on either or both ends
-  -  
+  - The device on the other end of the cable is powered off
+  - Broken connectors, which cause loose connections
+  - Bent or stretched cables, which lead to broken wires or fibres
+  - Electromagnetic Interference (EMI) sources, such as motors or microwaves, which cause errors in transmission (newer cable is less susceptible to this)
+
+###   Layer  1  Troubleshooting Commands  
+  Switch# show ip interface brief
+  - 'administratively down' - Issue 'no shutdown'
+  - 'down/down' - This indicates a Layer 1 issue. Check that the interface is connected at both ends and that the device on the other side is powered on
+  - 'up/down' - This indicates a Layer 2 issue or speed mismatch. Check the interface configuration matches on both sides of the link
+  Switch# show interface
+  - If the interface is reporting an excessive amount of errors, it could be either a layer 1 or layer 2 problem
+  - Check the integrity  of the cable
+  - Check the configuration matches on both sides of the link
+
+### Speed and Duplex Mismatches
+  - A possible error is speed and/or duplex mismatches
+  - Incorrect speed settings can cause the interface to operate below its maximum speed
+  - Speed mismatches will typically bring the interface down
+  - The interface will typically stay up with duplex mismatches, but performance will be terrible because of collisions
+  - The 'show interface' command will report an excessively high number of errors in this case
+  - Both sides of a link must be set to the same, either auto or manually configured
+  - Cisco devices default to auto
+  - If one side is set to auto, and the other is manually configured, this will often result in a mismatch
+  - Best practice is to manually configure ports attached to other network infrastructure devices or servers
+  - Remember to manually configure both sides of the link
+  - If a device has issues with auto-negotiating speed or duplex, manually configuring both sides will normally solve the problem
+
+CDP SHOULD DETECT A DUPLEX MISMATCH
