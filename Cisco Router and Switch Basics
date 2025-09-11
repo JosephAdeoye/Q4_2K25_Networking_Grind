@@ -15,3 +15,32 @@
   - Both sides of a link should auto-negotiate to full duplex and the fastest available speed.
   - Best practice is to manually set the speed and duplex on ports which are connected to another network infrastructure device or server.
   - It is very important to set matching speed and duplex settings on both sides of the link.
+
+### CDP Cisco Discovery Protocol
+  - Cisco Discovery Protocol (CDP) is a Cisco proprietary Layer 2 protocol.
+  - It is used to share information with other directly connected Cisco equipment, such as the operating system version and IP address.
+  - This aids in troubleshooting by allowing administrators to map out how Cisco devices are connected to each other.
+  - It is enabled by default on most Cisco equipment.
+  - It works at Layer 2, so the device doesn't need to have an IP address.
+
+### CDP config commands
+  - show cdp
+  - show cdp neighbors
+  - show cdp neighbors detail
+
+### LLDP Link Layer Discovery Protocol
+  - LLDP is an open standard protocol which provides similar information to CDP.
+ ## Differences with CDP:
+  - Depending on the switch and version, it may be disabled by default
+  - It is only supported on physical interfaces
+  - It can only discover up to one device per port
+  - It can discover Linux servers
+
+### LLDP config commands
+  - show lldp
+  - show lldp neighbors
+  - show lldp neighbors detail
+
+### Layer 1 Troubleshooting
+  - Basic switch troubleshooting involves checking for Layer 1 and Layer 2 issues.
+  - Copper and Fibre cables are liable to break if not handled correctly
