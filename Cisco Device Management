@@ -1,1 +1,39 @@
+# Cisco Device Memory
+- Cisco routers and switches have 4 built-in memory locations:
+  - ROM - Read Only Memory
+  - Flash - newer devices use removable CompactFlash
+  - NVRAM - Non-Volatile RAM
+  - RAM - Random Access Memory
+
+  An external USB device can also be used 
+
+ROM - Read Only Memory
+  - When the device is powered on, it will first load from ROM
+  - Two main functions are performed:
+    - Power on Self Test (POST)
+    - Load Bootstrap
+  - The bootstrap will look in Flash for an IOS software image to load
+
+Flash Memory 
+  - The system will load the first IOS image found in Flash by default
+  - You can override this with the boot system command
+  - You can copy additional IOS system images to Flash via TFTP or USB
+
+NVRAM Non-Volatile RAM Memory
+  - When the system has finished loading the IOS system image from Flash, it will load the startup-config configuration file from NVRAM
+  - The saved startup=config becomes the current running-config in RAM  
+  - If no startup-config file is found, the device will load the Setup Wizard
+  - Whenever you enter a command in IOS, it takes effect immediately and goes into the running-config
+  - To make your changes permanent across a reboot, enter:
+      'copy running-config startup-config'
+
+RAM Random Access Memory
+  - The IOS system image and startup-config are loaded from Flash and NVRAM into RAM during bootup
+  - RAM is used as the normal working memory of the device
+  - ROM, Flash and NVRAM are permanent memory; their contents are not lost when the device is powered off or rebooted
+  - RAM is volatile memory; its contents are lost when the device is powered off
+
+The VLAN Database
+  - On a switch, the VLAN database (vlan.dat) is saved in either Flash or NVRAM, depending on the model of the switch.
+
 
