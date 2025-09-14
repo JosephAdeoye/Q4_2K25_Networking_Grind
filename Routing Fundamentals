@@ -1,1 +1,11 @@
+Router Functions
+  A router has two main functions:
+    - Determining the best path to available networks
+    - Forwarding traffic to those networks
+    - The best available path or paths to a destination network are listed in a router's ROUTING TABLE and will be used for forwarding traffic
+    - A routing table consists of directly connected networks and routes configured statically by the administrator or dynamically learned through a routing protocol
+The command to view the routing table on a router is 'show ip route'
 
+  Static Routes
+    - If a router receives traffic for a network to which it is not directly attached, it needs to know how to get there to forward the traffic
+    - An administrator can manually add a static route to the destination, or the router can learn it via a routing protocol
