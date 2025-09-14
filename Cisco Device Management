@@ -36,4 +36,9 @@ RAM Random Access Memory
 The VLAN Database
   - On a switch, the VLAN database (vlan.dat) is saved in either Flash or NVRAM, depending on the model of the switch.
 
-
+Factory Reset 
+  - To factory reset a router or switch 
+    'write erase'
+  - This will erase the start-up config
+  - Reload to boot up with a blank configuration
+  - The setup wizard will run
