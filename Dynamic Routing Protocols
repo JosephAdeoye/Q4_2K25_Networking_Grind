@@ -1,1 +1,19 @@
+Dynamic Routing Protocols 
+  - When a routing protocol is used, routers automatically advertise their best paths to known networks to each other.
+  - Routers use this information to determine their own best path to the known destinations
+  - When the state of the network changes, such as a link going down or a new subnet being added, the routers update each other.
+  - Routers will automatically calculate a new best path and update the routing table if the network changes. 
+  - Summary routes lead to less memory usage in routers as their routing tables contain fewer routes.
+  - They also lead to less CPU usage, as changes in the network only affect other routers in the same area
 
+Dynamic Routing Protocols vs Static Routes
+  - Routing protocols are more scalable than administrator-defined static routes.
+  - Using purely static routes is only feasible in very small environments
+
+Dynamic Routing Protocols Advantages
+  - The routers automatically advertise available subnets to each other without the administrator having to manually enter every route on every router,
+  - If a subnet is added or removed, the routers will automatically discover that and update their routing tables.
+  - If the best path to a subnet goes down, routers automatically discover that and will calculate a new best path if one is available.
+  - Using a combination of a dynamic routing protocol and static routes is very common in real-world environments.
+  - In this case, the routing protocol will be used to carry the bulk of the network information.
+  - Static routes can also be used on an as-needed basis. For example, for backup purposes or for a static route to the internet(which will typically be injected into the dynamic routing protocol and advertised to the rest of the routers). 
