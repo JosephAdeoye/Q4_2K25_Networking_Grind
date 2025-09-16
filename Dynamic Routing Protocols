@@ -122,3 +122,8 @@ Equal Cost Multi Path (ECMP)
     - Equal Cost Multi-Path will load balance the outbound traffic to the destination over the different paths
     - All IGP routing protocols will perform ECMP by default
     - EIGRP is the only routing protocol which is capable of UnEqual Cost Multi Path. It must be manually configured to support this.
+
+Administrative Distance
+    - A router will typically only learn routes to a particular destination from a single routing protocol
+    - When multiple routes to a destination are learned through a routing protocol, the router will install the path or paths with the best (lowest) metric into the routing table
+    - Different routing protocols use different methods to calculate the metric
