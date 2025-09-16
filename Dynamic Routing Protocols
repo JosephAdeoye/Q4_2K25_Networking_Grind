@@ -116,3 +116,9 @@ Choosing a Routing Protocol
     - EIGRP is very simple to maintain, and calculates changes very quickly, and its metric calculation will normally choose the best path by default. It is typically supported only on Cisco routers
     - OSPF's metric calculation will typically choose the best path by default. It is an open standard which is supported by all vendors' routers and is the most commonly deployed IGP today. It is, however, more complicated to maintain than EIGRP.
     - IS-IS links need to be manually configured, or it will use the hop count to determine the best path. It is typically only used in Service Provider networks or large organisations with their own MPLS network, who choose it because of its scalability.
+
+Equal Cost Multi Path (ECMP)
+    - If multiple paths to a destination have an equal metric, the router will enter all of the paths into the routing table
+    - Equal Cost Multi-Path will load balance the outbound traffic to the destination over the different paths
+    - All IGP routing protocols will perform ECMP by default
+    - EIGRP is the only routing protocol which is capable of UnEqual Cost Multi Path. It must be manually configured to support this.
