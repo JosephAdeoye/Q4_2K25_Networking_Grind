@@ -17,3 +17,65 @@ Dynamic Routing Protocols Advantages
   - Using a combination of a dynamic routing protocol and static routes is very common in real-world environments.
   - In this case, the routing protocol will be used to carry the bulk of the network information.
   - Static routes can also be used on an as-needed basis. For example, for backup purposes or for a static route to the internet(which will typically be injected into the dynamic routing protocol and advertised to the rest of the routers). 
+
+ROUTING PROTOCOLS TYPES
+Routing protocols can be split into two main types:
+    - Interior gateway protocols (IGPs)
+    - Exterior gateway protocols (EGPs)
+Interior gateway protocols are used for routing within an organisation
+Exterior gateway protocols are used for routing between organisations over the Internet
+The only EGP in use today is BGP (Border Gateway Protocol)
+
+Interior gateway protocols can be split into two main types:
+    - Distance Vector routing protocols
+    - Link State routing protocols
+
+DISTANCE VECTOR ROUTING PROTOCOLS
+    - In Distance Vector protocols, each router sends its directly connected neighbours a list of all its known networks along with its own distance to each of those networks
+    - Distance vector routing protocols do not advertise the entire network topology
+    - A router only knows its directly connected neighbours and the lists of networks those neighbours have advertised. It doesn't have detailed topology information beyond its directly connected neighbours
+    - Distance Vector routing protocols are often called 'Routing by rumour'.
+
+LINK STATE ROUTING PROTOCOLS
+    - In Link State routing protocols, each router describes itself and its interfaces to its directly connected neighbours
+    - This information is passed unchanged from one router to another
+    - Every router learns the full picture of the network, including every router, its interfaces and what they connect to
+
+## ROUTING PROTOCOLS
+
+Routing protocols are categorised into **Interior Gateway Protocols (IGPs)** and **Exterior Gateway Protocols (EGPs)**.
+
+### Interior Gateway Protocols (IGPs)
+Used **within a single Autonomous System (AS)**.
+
+- **Distance Vector Protocols**
+  - RIP (Routing Information Protocol)
+  - EIGRP (Enhanced Interior Gateway Routing Protocol) → often called "Advanced Distance Vector"
+
+- **Link State Protocols**
+  - OSPF (Open Shortest Path First)
+  - IS-IS (Intermediate System – Intermediate System)
+
+### Exterior Gateway Protocols (EGPs)
+Used **between different Autonomous Systems (ASes)**.
+
+- **Path Vector Protocols**
+  - BGP (Border Gateway Protocol)
+
+---
+## ROUTING PROTOCOLS Comparison
+
+| Feature              | Distance Vector                  | Link State                                | Path Vector             |
+|----------------------|----------------------------------|-------------------------------------------|-------------------------|
+| **Examples**         | RIP, EIGRP                       | OSPF, IS-IS                               | BGP                     |
+| **Metric**           | Hop count (RIP), Composite (EIGRP) | Cost (OSPF), Link metrics (IS-IS)         | Path attributes (AS-Path, etc.) |
+| **Updates**          | Periodic (broadcasts entire table) | Triggered, only when topology changes     | Updates based on AS-path changes |
+| **Knowledge**        | Knows only next hop              | Has complete topology of the network      | Knows entire AS-path to destination |
+| **Convergence**      | Slower (RIP), faster (EIGRP)     | Faster convergence                        | Slower (Internet scale) |
+| **Scalability**      | Low (RIP limited to 15 hops)     | High (OSPF/IS-IS scale well in large AS)  | Very High (global Internet) |
+| **Use Case**         | Small networks, legacy           | Large enterprise and ISP internal networks | Internet routing between ISPs |
+
+INTERIOR GATEWAY PROTOCOLS
+    - All of the IGPs do the same job, which is to advertise routes within an organisation and determine the best path or paths
+    - An organisation will typically pick one of the IGPs
+    - If an organisation has multiple IGPs in effect (for example, because of a merger or an acquisition), information can be redistributed between them. This should generally be avoided.
