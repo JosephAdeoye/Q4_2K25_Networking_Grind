@@ -127,3 +127,40 @@ Administrative Distance
     - A router will typically only learn routes to a particular destination from a single routing protocol
     - When multiple routes to a destination are learned through a routing protocol, the router will install the path or paths with the best (lowest) metric into the routing table
     - Different routing protocols use different methods to calculate the metric
+    - If paths to the same destination are received from different routing protocols, their metrics cannot be compared
+    - For example, a RIP hop count of 5 cannot be compared to an OSPF cost of 60. The comparison would be meaningless because the routing protocols calculate the metric in completely different ways.
+    - The router must use a different method to choose when routes to the same destination are received from different routing protocols
+    - The ADMINISTRATIVE DISTANCE (AD) is used for this
+    - The ADMINISTRATIVE DISTANCE is a measure of how trusted the routing protocol is 
+    - If routes to the same destination are received via different routing protocols, the protocol with the best (lowest) ADMINISTRATIVE DISTANCE wins.
+
+## Default Administrative Distances
+
+Administrative Distance (AD) is the "trustworthiness" of a routing source.  
+- Lower AD = more preferred route.  
+- If multiple routes exist to the same destination, the route with the **lowest AD** is installed in the routing table.  
+
+| Route Source          | Default AD |
+|-----------------------|------------|
+| Connected Interface   | 0          |
+| Static Route          | 1          |
+| External BGP          | 20         |
+| EIGRP (Internal)      | 90         |
+| OSPF                  | 110        |
+| IS-IS                 | 115        |
+| RIP                   | 120        |
+
+---
+
+### Key Notes
+- **Connected (0)** always wins over any learned route.  
+- **Static (1)** is preferred unless a connected interface exists.  
+- **EIGRP (90)** is more preferred than OSPF (110) or RIP (120).  
+- **External BGP (20)** is trusted more than IGPs but less than static/connected.  
+- Higher AD = less preferred (RIP often loses if other options exist).  
+
+Administrative Distance and Metric
+  - ADMINISTRATIVE DISTANCE IS USED TO CHOOSE BETWEEN MULTIPLE PATHS LEARNED VIA DIFFERENT ROUTING PROTOCOLS
+  - METRIC IS USED TO CHOOSE BETWEEN MULTIPLE PATHS LEARNED VIA THE SAME PROTOCOL
+  - THE ADMINISTRATIVE DISTANCE IS CONSIDERED FIRST TO NARROW THE CHOICE DOWN TO THE SINGLE BEST ROUTING PROTOCOL
+  - THE METRIC IS THEN CONSIDERED TO CHOOSE THE BEST PATH OR PATHS WHICH MAKE IT INT
