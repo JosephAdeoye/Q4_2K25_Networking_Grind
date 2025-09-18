@@ -1,5 +1,24 @@
-Learning Routes
 Routers learn routes by:
   - An administrator configuring IP addresses on its interfaces (Connected and Local routes)
   - An administrator configuring Static routes on that router
   - Receiving them via routing protocols from neighbouring routers
+
+Route Precedence
+  - A router's main job is to forward packets received towards their destination, based on the packet's destination IP address
+  - It decides where to forward a packet based on the routes it has learned 
+  - The best route for a packet decision is based on:
+    1. Longest prefix (most specific)
+    2. AD Administrative Distance
+    3. Metric (cost)
+
+  - If a router learns multiple routes for the same network and prefix, it must decide which is the best route
+  - For example, these routes are for the same network and prefix:
+    - 192.168.0.0/24 received via EIGRP from R2
+    - 192.168.0.0/24 received via OSPF from R3
+  - Only the best route for each learned network/prefix makes it into the routing table and is used to forward packets
+  - Criteria for which is the best route to the same network/prefix:
+    1. Administrative Distance (lower value is better.) If there is a tie:
+    2. Metric (lower value is better)
+  - If there are multiple best routes with the same ADMINISTRATIVE DISTANCE and METRIC, they will all enter the routing table, and the router will perform Equal Cost Load Balancing over them
+
+
