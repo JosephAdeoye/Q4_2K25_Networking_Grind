@@ -1,1 +1,5 @@
-
+Learning Routes
+Routers learn routes by:
+  - An administrator configuring IP addresses on its interfaces (Connected and Local routes)
+  - An administrator configuring Static routes on that router
+  - Receiving them via routing protocols from neighbouring routers
