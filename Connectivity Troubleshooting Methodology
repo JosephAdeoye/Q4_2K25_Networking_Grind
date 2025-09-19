@@ -3,4 +3,18 @@ Connectivity Test Tools
   - The PING tool uses ICMP to test reachability between two endpoints on a network
   - The sender sends an ECHO Request, while the receiver, if reachable, sends an ECHO Reply
 ICMP - INTERNET CONTROL MESSAGE PROTOCOL
+  # TRACEROUTE 
+  - Trace route is very similar to PING and is also used for checking connectivity
+  - It traces the path that traffic is following in the network
+  - The TRACEROUTE uses the TTL field to prevent routing loops.
+  - TTL is Time to Live 
+  - Every time a router processes a packet, it decrements the TTL field by one. 
+  - The TTL field ensures that packets do not loop in the network forever
+
+  # OTHER TOOLS - L1
+  - SHOW IP INT BR
+  - SHOW IP
+  # OTHER TOOLS - L2
+  - SHOW ARP
+  - SHOW MAC ADDRESS-TABLE
 
