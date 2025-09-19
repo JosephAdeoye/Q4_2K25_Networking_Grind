@@ -1,1 +1,6 @@
+Connectivity Test Tools
+  # PING 
+  - The PING tool uses ICMP to test reachability between two endpoints on a network
+  - The sender sends an ECHO Request, while the receiver, if reachable, sends an ECHO Reply
+ICMP - INTERNET CONTROL MESSAGE PROTOCOL
 
