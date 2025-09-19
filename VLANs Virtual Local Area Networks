@@ -1,1 +1,28 @@
+# Campus Design - Access, Distribution and Core Layers
+  - The campus LAN should be designed for scalability, performance and security
+  - To aid in a best practice design process, the network topology is split into access, distribution and core layers
+  - The layers have their own design principles and characteristics
 
+# THE ACCESS LAYER
+  - End hosts such as desktop computers, servers, and IP phones connect to the network at the access layer
+  - It is designed to have a high port count at an affordable cost
+  - Desktops typically have only one Network Interface Card (NIC), so they connect to one switch or Wireless Access Point
+  - Servers will often have dual NICs and connect to a pair of redundant switches
+  - Client access security measures are enabled at the Access Layer
+
+# THE DISTRIBUTION LAYER
+  - Access Layer switches uplink to Distribution Layer switches
+  - The Distribution Layer switches serve as an aggregation point for the Access Layer and provide scalability
+  - Distribution Layer switches are typically deployed in redundant pairs, with downstream Access Layer switches connected to both
+  - End hosts are not typically connected here
+  - Most software policy, such as QoS, is enabled at this layer
+
+# THE CORE LAYER
+  - Distribution Layer switches uplink to Core Layer switches
+  - Core Layer switches are typically deployed in redundant pairs, with downstream Distribution Layer switches connected to both
+  - Traffic between different parts of the campus network travels through the core, so it is designed for speed and resiliency
+  - Software policy slows the switch down, so it should be avoided in the Core Layer
+
+# Collapsed Distribution and Core
+  - Smaller campuses do not need the scalability of three separate layers
+  - In this case, a Collapsed Distribution and Core layer is used, where the Distribution and Core layer functions are performed on the same hardware device
