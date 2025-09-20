@@ -47,3 +47,32 @@ WHY WE HAVE VLANS
   - We can increase performance and security in the LAN by implementing VLANs on our switches
   - VLANs segment the LAN into separate broadcast domains at Layer 2
   - There is typically a one-to-one relationship between an IP subnet and a VLAN
+
+# VLAN Access Ports
+  - VLAN access ports are configured on switch interfaces where end hosts are plugged in
+  - Access ports are configured with one specific VLAN
+  - The configuration is all on the switch; the end host is not VLAN aware
+  - Switches only allow traffic within the same VLAN
+
+HOSTS IN THE SAME IP SEGMENT SHOULD BE IN THE SAME VLAN
+HOSTS IN DIFFERENT IP SEGMENTS SHOULD BE IN THE SAME VLAN
+
+# DEFAULT VLAN
+  - All ports on a switch are by default in VLAN 1
+
+# ACCESS PORT CONFIGURATION
+  ENG vlan example
+  - vlan 10
+  - name ENG
+  THEN YOU NEED TO ENTER THE INTERFACE VIEW OF THE INTERFACES YOU WANT TO ADD TO THIS VLAN
+  - interface FastEthernet 0/1
+  - switchport mode access
+  - switchport access vlan 1o
+  YOU CAN ALSO ADD A RANGE OF INTERFACES AT THE SAME TIME USING A RANGE
+  - interface range FastEthernet 0/3 - 5
+  - switchport mode access
+  - switchport access vlan 10
+
+  You can then use the
+  - show vlan brief command to verify your configuration
+  
