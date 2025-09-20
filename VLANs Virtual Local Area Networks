@@ -26,3 +26,24 @@
 # Collapsed Distribution and Core
   - Smaller campuses do not need the scalability of three separate layers
   - In this case, a Collapsed Distribution and Core layer is used, where the Distribution and Core layer functions are performed on the same hardware device
+
+WHY WE HAVE VLANS
+
+# Router Operations
+  - Routers operate at Layer 3 of the OSI stack
+  - Hosts in separate IP subnets must send traffic via a router to communicate
+  - Security rules on routers or firewalls can be used to easily control what traffic is allowed between different IP subnets at Layer 3
+  - Routers do not forward broadcast traffic by default
+  - They provide performance and security by splitting networks into smaller domains at Layer 3
+
+# Switch Operations
+  - Switches operate at Layer 2 of the OSI stack
+  - They do forward broadcast traffic by default
+  - By default, a campus switch network is one large broadcast domain
+  - Switches flood broadcast traffic everywhere, including between different IP subnets
+  - This raises performance and security concerns
+
+# VLAN Virtual Local Area Networks
+  - We can increase performance and security in the LAN by implementing VLANs on our switches
+  - VLANs segment the LAN into separate broadcast domains at Layer 2
+  - There is typically a one-to-one relationship between an IP subnet and a VLAN
