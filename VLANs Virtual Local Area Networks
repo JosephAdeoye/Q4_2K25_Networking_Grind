@@ -75,4 +75,6 @@ HOSTS IN DIFFERENT IP SEGMENTS SHOULD BE IN THE SAME VLAN
 
   You can then use the
   - show vlan brief command to verify your configuration
-  
+
+# VLAN TRUNK PORTS
+  -  
