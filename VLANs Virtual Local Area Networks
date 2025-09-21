@@ -77,4 +77,5 @@ HOSTS IN DIFFERENT IP SEGMENTS SHOULD BE IN THE SAME VLAN
   - show vlan brief command to verify your configuration
 
 # VLAN TRUNK PORTS
-  -  
+  - A trunk port simply allows more than one VLAN to pass through an interface
+  - 
