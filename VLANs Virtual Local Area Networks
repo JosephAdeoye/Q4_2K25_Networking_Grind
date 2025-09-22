@@ -77,5 +77,22 @@ HOSTS IN DIFFERENT IP SEGMENTS SHOULD BE IN THE SAME VLAN
   - show vlan brief command to verify your configuration
 
 # VLAN TRUNK PORTS
-  - A trunk port simply allows more than one VLAN to pass through an interface
-  - 
+  - A trunk port allows more than one VLAN to pass through an interface
+  - The protocol used for Trunk ports is Dot1Q
+  - An access port carries traffic for one specific VLAN
+  - Dot1Q trunks are configured on the links between switches where we need to carry traffic for multiple VLANs.
+
+
+  ### 802.1Q Header (32 bits total)
+  - **Tag Protocol Identifier (TPID)** – 16 bits (`0x8100`) to indicate a VLAN-tagged frame.  
+  - **Priority Code Point (PCP)** – 3 bits, for QoS (IEEE 802.1p).  
+  - **Drop Eligible Indicator (DEI)** – 1 bit, indicates if frame can be dropped under congestion.  
+  - **VLAN ID (VID)** – 12 bits, identifies VLAN (range: 1–4094).  
+
+  ---
+
+  ### Key Notes
+  - The tag is **added by a switch** when sending frames out a **trunk port**.  
+  - The receiving switch uses the VLAN ID to forward the frame to the correct VLAN.  
+  - When forwarding frames out of an **access port**, the switch **removes the tag** before sending it to the end host.  
+
