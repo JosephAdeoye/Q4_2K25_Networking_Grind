@@ -96,3 +96,28 @@ HOSTS IN DIFFERENT IP SEGMENTS SHOULD BE IN THE SAME VLAN
   - The receiving switch uses the VLAN ID to forward the frame to the correct VLAN.  
   - When forwarding frames out of an **access port**, the switch **removes the tag** before sending it to the end host.  
 
+  # Hypervisors - VLAN Aware Hosts
+  - End hosts are typically members of only one VLAN and are not VLAN aware.
+  - A special case is virtualised hosts, where there are virtual machines in different IP subnets on the host.
+  - In this case, we need to trunk the VLANs down to the host
+
+  ### The Native VLAN
+  - The switch needs to know which VLAN to assign to any traffic which comes in untagged on a trunk port
+  - This used to be required when a switch was connected to a hub. Hubs are layer 1 devices so are not VLAN aware
+  - The Native VLAN is used for this
+  - The default Native VLAN is VLAN 1
+  - There are some security issues with using VLAN 1 as the native VLAN, so the best practice is to change it to an unused VLAN
+  - The Native VLAN must match on both sides of a trunk for it to come up. 
+
+  🚗 Analogy for Native VLAN: Traffic lanes (VLANs) on a highway
+
+    Imagine a highway with different lanes (VLANs).
+
+  - Each car (Ethernet frame) usually has a sticker (VLAN tag) showing which lane it belongs to.
+  - But sometimes, a car comes without a sticker (untagged frame).
+  - The Native VLAN is like the default lane for cars with no sticker.
+
+  ✅ Why it exists:
+
+  - Some devices (like old IP phones, management protocols, or non-VLAN-aware devices) may send untagged traffic.
+  - The Native VLAN ensures that untagged frames don’t get dropped, but instead have a home.
