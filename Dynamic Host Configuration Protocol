@@ -1,3 +1,22 @@
 ### DHCP - Dynamic Host Configuration Protocol  
-  - DHCP is a client/server protocol that automatically provides a host with its IP address and other related configuration information such as the subnet mask and default gateway.
+  - DHCP is a client/server protocol that automatically provides a host with its IP address and other related configuration information, such as the subnet mask and default gateway.
   - DHCP clients obtain their IP configuration information from a DHCP server, rather than being manually configured.
+
+## DHCP – Dynamic Host Configuration Protocol
+
+DHCP automates the assignment of **IP addresses, subnet masks, default gateways, and DNS servers** to clients.  
+It follows a 4-step process often remembered as **DORA**:
+
+### DHCP Process (DORA)
+
+1. **Discover** – The client broadcasts a request for an IP address.  
+2. **Offer** – The DHCP server replies with an available IP (unicast or broadcast).  
+3. **Request** – The client broadcasts a request to accept the offered IP.  
+4. **Acknowledge** – The DHCP server confirms and assigns the IP (unicast or broadcast).  
+
+### DHCP Benefits
+  - Centralised and automated IP configuration, rather than manually assigning an IP address to every host   
+  - Can assign additional IP configuration values by means of DHCP options
+  - Efficient handling of clients that must be updated frequently, such as laptops that move to different locations on a wireless network
+  - DHCP minimises configuration errors caused by manual IP address configuration, such as typos, or address conflicts caused by the assignment of an IP address to more than one computer at the same time
+
