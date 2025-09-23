@@ -1,1 +1,3 @@
-
+### DHCP - Dynamic Host Configuration Protocol  
+  - DHCP is a client/server protocol that automatically provides a host with its IP address and other related configuration information such as the subnet mask and default gateway.
+  - DHCP clients obtain their IP configuration information from a DHCP server, rather than being manually configured.
