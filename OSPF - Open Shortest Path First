@@ -50,3 +50,12 @@ The network command here means:
   - Look for interfaces with an IP address which falls within this range
   - Enable OSPF on those interfaces - send out and listen for OSPF hello messages, and peer with adjacent OSPF routers
   - Advertise the network and mask which is configured on those interfaces
+
+OSPF Router ID
+  - OSPF routers identify themselves using an OSPF Router ID, which is in the form of an IP Address
+  - This will default to being the highest IP address of any loopback interfaces configured on the router, or the highest other IP address if a loopback does not exist
+  - Loopback interfaces never go down, so the Router ID will not change
+  - You can also manually specify the Router ID
+  - Best practice is to use a LoopBack or manually set the Router ID
+** IF A LOOPBACK OR HIGHER IP ADDRESS IS CONFIGURED, THE ROUTER ID WILL CHANGE ON OSPF PROCESS RESTART
+** DEFAULT-INFORMATION ORIGINATE IS USED FOR DEFAULT ROUTE INJECTION IN AN OSPF PROCESS
