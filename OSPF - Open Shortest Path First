@@ -1,0 +1,30 @@
+OSPF CHARACTERISTICS
+
+  - OSPF is a Link State routing protocol
+  - It supports large networks
+  - It has a very fast convergence time
+  - Messages are sent using multicast
+  - OSPF is an open standard protocol
+  - It uses Dijkstra's Shortest Path First Algorithm to determine the best path to learned networks.
+
+Link State Routing Protocols
+  - In Link State routing protocols, each router describes itself and its interfaces to its directly connected neighbours
+  - This information is passed unchanged from one router to another
+  - Every router learns the full picture of the network, including every router, its interfaces and what they connect to
+  - OSPF routers use LSA Link State Advertisements to pass on routing updates
+
+OSPF Operations
+  - Discover neighbours
+  - Form adjacencies
+  - Flood Link State Database (LSDB)
+  - Compute Shortest Path
+  - Install the best routes in the routing table
+  - Respond to network changes
+
+OSPF Packet Types
+  - Hello Packets: A router will send out and listen for Hello packets when OSPF is enabled on an interface, and form adjacencies with other OSPF routers on the link
+  - DD (Database Description) packets: Adjacent routers will tell each other what they know about the network with the DD Packet
+  - LSR (Link State Request) packets: If a router is missing information about any of the networks in the received DD, it will send the neighbour an LSR packet
+  - LSU (Link State Advertisement) packets: A routing update
+  - LSU (Link State Update): Contains a list of LSAs which should be updated, used during flooding
+  - LSAck (Link State Acknowledgement): Receiving routers acknowledge LSAs
