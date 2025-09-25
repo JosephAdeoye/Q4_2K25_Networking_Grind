@@ -28,3 +28,11 @@ OSPF Packet Types
   - LSU (Link State Advertisement) packets: A routing update
   - LSU (Link State Update): Contains a list of LSAs which should be updated, used during flooding
   - LSAck (Link State Acknowledgement): Receiving routers acknowledge LSAs
+
+OSPF Configuration - Process ID
+config R1 (config) #router ospf 1
+
+  - Different interfaces on a router can run in different instances of OSPF
+  - Different instances have different Link State Databases
+  - Only one instance is typically configured on OSPF routers - multiple Process IDs are rarely used
+  - The process ID is locally significant. It does not have to match the neighbour router to form an adjacency
