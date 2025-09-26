@@ -1,1 +1,14 @@
+Why do we need STP?
+  1. Switching and Redundancy
+  In enterprise networks, we often use redundant links between switches.
+  Redundancy provides:
+  High availability → if one link fails, traffic can use the backup.
+  Load balancing in some designs.
+  👉 But redundancy introduces a big problem: Layer 2 loops.
 
+  2. Problems Caused by Loops
+  Unlike Layer 3 (IP), Ethernet has no TTL (Time to Live) field to limit how long a frame circulates. This means:
+  - Broadcast Storms: A broadcast frame (like an ARP request) can loop endlessly, consuming bandwidth and CPU until the network crashes.
+  - Multiple Frame Copies: Switches flood broadcasts out all ports (except the incoming one). In a loop, the same frame arrives multiple times → hosts receive duplicate frames, causing confusion.
+  - MAC Address Table Instability: Switches learn MAC addresses based on incoming frames. In a loop, the same MAC might be seen on different ports repeatedly. The switch keeps updating its table, breaking unicast traffic.
+  👉 End result: the entire network can melt down within seconds.
