@@ -1,4 +1,4 @@
-Why do we need STP?
+WHY DO WE NEED STP?
   1. Switching and Redundancy
   In enterprise networks, we often use redundant links between switches.
   Redundancy provides:
@@ -12,3 +12,10 @@ Why do we need STP?
   - Multiple Frame Copies: Switches flood broadcasts out all ports (except the incoming one). In a loop, the same frame arrives multiple times → hosts receive duplicate frames, causing confusion.
   - MAC Address Table Instability: Switches learn MAC addresses based on incoming frames. In a loop, the same MAC might be seen on different ports repeatedly. The switch keeps updating its table, breaking unicast traffic.
   👉 End result: the entire network can melt down within seconds.
+
+SPANNING TREE TERMINOLOGY - THE BRIDGE
+  - Hubs were Layer 1 devices which performed the same function as switches - connecting Ethernet LAN hosts
+  - Hubs did not learn MAC addresses, so they flood all traffic out all ports apart from the one it was received
+  - Switches provide performance and security improvements by only forwarding traffic to known unicast MAC addresses out the relevant port
+  - Ealy switches were expensive, had very few ports and were called bridges
+  - They segmented LANs which were built with hubs.
