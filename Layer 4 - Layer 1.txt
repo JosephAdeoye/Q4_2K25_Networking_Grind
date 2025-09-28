@@ -261,13 +261,21 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
     - The burned in MAC address on every NIC port in the world is globally unique.
     - Example - 00:50:56:C0:00:08
 
+### Data link layer protocols include:
+
+   - Ethernet
+   - 802.11 Wireless
+   - Point-to-Point Protocol (PPP)
+   - High-Level Data Link Control (HDLC)
+   - Frame Relay
+
 ### Layer 1 - Physical Layer
-    - OSI Layer 1 conveys the bit stream - electrical impilse, light or radio signals - through the network at the electrical and mechanical level.
+    - OSI Layer 1 conveys the bit stream - electrical impulse, light or radio signals - through the network at the electrical and mechanical level.
     - It provides the hardware means of sending and receiving data, including defining cables, interface cards and physical aspects.
 # Layer 1 connection Types for Ethernet - UTP 
-    - Ethernet LAN connections can be carried over coaxial cables (no longer in use), twisted copper pair cable, fiber cable or wireless.
+    - Ethernet LAN connections can be carried over coaxial cables (no longer in use), twisted copper pair cable, fibre cable or wireless.
     - Copper UTP (Unshielded Twisted Pair) cables are commonly used to connect desktop computers to switches.
-    - Conntector type is RJ-45 and maximum length is 100 metres.
+    - Connector type is RJ-45, and the maximum length is 100 metres.
 
 # UTP cable categories
     +----------+-------------------+
@@ -283,9 +291,9 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
 
 # Straight-Through vs Crossover UTP Cable
     - The receive and transmit wires in a UTP cable can be wired to the RJ-45 connector as either straight-through or crossover.
-    - Straight-through cables are used to connect an end device such as a pc or router to a switch.
-    - Crossover cables are used to connect devices together directly. They are most often used to connect two devices of the same type: e.g. two computers or two switches to each other.
-    - Modern switches support Auto MDI-X where the receive and transmit signals are reconfigured automatically to yield the expected result.
+    - Straight-through cables are used to connect an end device, such as a pc or router, to a switch.
+    - Crossover cables are used to connect devices directly. They are most often used to connect two devices of the same type: e.g. two computers or two switches to each other.
+    - Modern switches support Auto MDI-X, where the receive and transmit signals are reconfigured automatically to yield the expected result.
 
 ** Auto MDI-X (Automatic Medium-Dependent Interface Crossover) ** is a feature on modern network devices (like switches, routers, and NICs) that automatically detects the type of Ethernet cable (straight-through or crossover) and adjusts the connection accordingly.
 
@@ -297,15 +305,15 @@ With Auto MDI-X, you can use any cable (straight or crossover), and the device w
 
 That’s why today, crossover cables are almost obsolete 🚀.
 
-# Fiber Cables
-    - Fiber optic cables can be used to support longer distances or higher bandwidth requirements.
-    - For example between separate buildings in a campus, or for switch to switch connections inside a building.
+# Fibre Cables
+    - Fibre optic cables can be used to support longer distances or higher bandwidth requirements.
+    - For example, between separate buildings in a campus, or for switch to switch connections inside a building.
 
-# Single Mode vs Multi Mode Fiber
-    - Single Mode or Multi Mode Fiber can be used.
-    - Single Mode supports higher bandwidth and longer distances but it is more expensive.
+# Single Mode vs Multi Mode Fibre
+    - Single-mode or Multi-mode fibre can be used.
+    - Single-mode supports higher bandwidth and longer distances, but it is more expensive.
 
-## Single-Mode vs Multi-Mode Fiber
+## Single-Mode vs Multi-Mode Fibre
 
 | Feature              | Single-Mode Fiber (SMF)                  | Multi-Mode Fiber (MMF)               |
 |----------------------|-------------------------------------------|---------------------------------------|
@@ -328,7 +336,7 @@ That’s why today, crossover cables are almost obsolete 🚀.
 - Multiple light paths → more dispersion  
 - Best for *short distance*
 
-## Widely Used Fiber Connector Today
+## Widely Used Fibre Connector Today
 
 👉 LC (Lucent Connector) is the industry standard in modern networks, especially in:
 
@@ -353,4 +361,6 @@ Standards:
 
     - IEEE 802.3bt (PoE++/4PPoE): Provides up to 60–100W per port.
 
-    Common Uses: IP phones, wireless access points, security cameras, IoT         devices, and network switches.
+    Common Uses: IP phones, wireless access points, security cameras, IoT devices, and network switches.
+
+
