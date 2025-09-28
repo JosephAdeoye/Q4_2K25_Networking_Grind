@@ -60,4 +60,47 @@ OSPF Router ID
 ** IF A LOOPBACK OR HIGHER IP ADDRESS IS CONFIGURED, THE ROUTER ID WILL CHANGE ON OSPF PROCESS RESTART
 ** DEFAULT-INFORMATION ORIGINATE IS USED FOR DEFAULT ROUTE INJECTION IN AN OSPF PROCESS
 
-OSPF AREAS
+
+  - In Link State Routing Protocols like OSPF, every router learns the full picture of the network, including every router, its interfaces and what they connect to
+  - This can cause issues in large networks:
+    - Too many routes can use up too much router memory
+    - Network changes cause all routers to reconverge, which takes time and CPU resources
+  TO MITIGATE AGAINST THESE ISSUES:
+    - OSPF supports a hierarchical design, which segments large networks into smaller areas to solve this problem
+    - Each router maintains full information about its own area, but only summary information about other areas
+
+  OSPF AREAS
+  - A two-level hierarchy is usually used when creating OSPF areas. The areas can be regarded as:
+    - Transit area (BACKBONE or AREA 0). This is AREA does not generally contain end users.
+    - Regular areas (NONBACKBONE AREAS). Used to connect end users to the Transit area. By default, all transit traffic goes through the TRANSIT (BACKBONE) AREA.
+  - Small networks do not require a hierarchical design, and all routers can be in AREA 0 (BACKBONE AREA).
+
+  OSPF CONFIGURATION - Network  
+  - R1(config-router)# network 10.0.0.0 0.0.255.255 area 0
+  - The above is configured at the interface level with the "network" command
+  - For a router to form an adjacency, its neighbour must be configured to be in the same area
+
+  OSPF Router Types - BACKBONE Routers
+  - Routers which have all their OSPF interfaces in AREA 0 are BACKBONE Routers
+  - Routers maintain a full Link State Database (LSDB) of other routers and links in their own area
+
+OSPF Router Types - AREA BORDER ROUTERS (ABRs)
+  - Routers which have interfaces in multiple areas are AREA BORDER ROUTERS (ABRs)
+An ABR has the following characteristics:
+  - It separates LSA flooding zones.
+  - It becomes the primary point for AREA address summarisation.
+  - It functions regularly as the source for default routes.
+  - It maintains the LSDB for each area with which it is connected. 
+  - The ideal design is to have each ABR connected to two AREAs only, the BACKBONE and another AREA, with three AREAS being the upper limit.
+
+Manual Summarisation
+  - AREA BORDER ROUTERS (ABRs) do not automatically summarise routes.
+  - If you do not configure summarisation, all routes are flooded everywhere.
+
+OSPF ROUTER TYPES - NORMAL AREA ROUTERS
+  - Routers which have all their OSPF interfaces in a normal AREA are normal internal routers.
+  - Routers maintain a full LSDB of other routers and links in their own area
+  - They learn Inter Area routes to other areas from their ABRs
+
+OSPF Router Types - AUTONOMOUS SYSTEM BOUNDARY ROUTERS
+  - Routers which redistribute into OSPF are AUTONOMOUS SYSTEM BOUNDARY ROUTERS
