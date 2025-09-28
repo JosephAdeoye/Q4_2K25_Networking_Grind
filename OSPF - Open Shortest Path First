@@ -114,7 +114,7 @@ The SPEED command
   - If you use the 'speed 10' command on a FastEthernet interface, it will physically transmit at 10 Mbps
 
 The CLOCK-RATE command
-  - The rate that Serial interfaces physically transmit at is set by the 'clock rate' command
+  - The 'clock rate' command sets the rate that Serial interfaces physically transmit at
   - Serial interfaces transmit at 1.544 Mbps by default
   - If you use the 'clock rate 64000' command on a Serial interface, it will physically transmit at 64 Kbps
 
@@ -125,3 +125,44 @@ The BANDWIDTH command
   - If you set a bandwidth of 50 Mbps on a FastEthernet interface, it will still transmit at 100 Mbps
   - The bandwidth command affects software policy on the router, such as which path will be selected by EIGRP or OSPF, or how much bandwidth will be guaranteed to a traffic type by QoS
   - You can influence software policy by setting the bandwidth on an interface
+
+OSPF Metric Calculation
+  - As OSPF is a Link State routing protocol, the router will learn about all destinations in its area, the links and their cost
+  - The router will select routes based on its lowest cost to get to the destination
+
+OSPF Link States
+  - In a multiple area OSPF network, ABRs know the information for each area they are connected to
+  - When multiple areas are in use, each router has individual routes for each IP subnet in its own area, and summary routes to other areas which go via an ABR
+
+OSPF Metric Calculation  
+  - For destinations in its own area, a router looks at all available links to get there, and chooses the path with the lowest overall cost
+  - For destinations in another area, a router looks at all available links to get to the ABR and chooses the path with the lowest overall cost to the ABR. It's then up to the ABR to choose the best path onwards from there
+
+SPF Shortest Path First Algorithm
+  - The SPF -- Shortest Path First Algorithm calculates the overall cost for each available path to each destination network, then selects the lowest cost path
+  - The overall cost = the cumulative cost of all outgoing interfaces
+  - You should ensure the cost is set the same on the interfaces on both sides of a link or you can get asymmetric routing
+
+Reference Bandwidth
+  - The cost is automatically derived from the interface bandwidth
+  - COST = REFERENCE BANDWIDTH / INTERFACE BANDWIDTH
+  - The default reference bandwidth is 100Mbps
+  - FastEthernet link cost defaults to 1 (100/100)
+  - OSPF treats all interfaces of 100 Mbps or faster as equal
+  - FastEthernet, Gigabit Ethernet, 10 Gigabit Ethernet, etc. all default to a cost of 1
+  - This can cause undesirable routing in modern networks
+
+YOU CAN, HOWEVER, ALTER THE DEFAULT REFERENCE BANDWIDTH USING THE FOLLOWING COMMANDS
+  - R1(CONFIG)# ROUTER OSPF 1
+  - R1(CONFIG-ROUTER)# AUTO-COST REFERENCE-BANDWITH 100000
+THE REFERENCE BANDWIDTH SHOULD BE CHANGED ON ALL ROUTERS
+
+Manipulating the OSPF Metric
+  - OSPF takes the bandwidth of an interface into account when calculating the metric, so paths along higher bandwidth links will be preferred
+  - The most desirable path will typically be automatically selected
+  - If you want to use a different path, you can manipulate this by manually changing the bandwidth or OSPF cost on interfaces 
+  - It is recommended to use cost because the bandwidth setting can affect many features other than OSPF (such as QoS)
+
+A MANUALLY CONFIGURED OSPF COST OVERRIDES THE VALUE AUTOMATICALLY DERIVED FROM THE BANDWIDTH 
+  - R1(config)# interface FastEthernet 0/0
+  - R1(config-if)#ip ospf cost 50
