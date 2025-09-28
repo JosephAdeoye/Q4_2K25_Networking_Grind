@@ -93,7 +93,7 @@ The UDP header is much simpler than TCP, providing basic connectionless communic
     - IP Addressing is a logical addressing scheme which is implemented at Layer 3
     - The Network designer uses IP addressing to partition the overall network into smaller 'subnets'.
     - This improves performance and security and makes troubleshooting easier.
-    - Layer 2 MAC address use one big flat addressing scheme. There is no logical separation between networks at Layer 2, it is done at Layer 3.
+    - Layer 2 MAC addresses use one big flat addressing scheme. There is no logical separation between networks at Layer 2, it is done at Layer 3.
 
 ## IPv4 Header Format  
 
@@ -166,7 +166,7 @@ The IPv4 address space was historically divided into **classes** (Class A, B, C,
     - `-2` accounts for the **network** and **broadcast** addresses  
 
 ### Notes
-- Designed for **very large organizations** needing millions of host addresses.  
+- Designed for **very large organisations** needing millions of host addresses.  
 - Address `127.x.x.x` is reserved for **loopback testing**, not for host addressing.  
 
 ### Quick Reference
@@ -201,12 +201,12 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
     - The two high-order bits in a class B address are always set to binary 10.
     - The default subnet mask is /16.
     - Valid network addresses range from 128.0.0.0 to 191.255.0.0/16
-    - This allows for 16,384 neworks and 65534 hosts per network.
+    - This allows for 16,384 networks and 65534 hosts per network.
 
 ### Class C IP Addresses
     - Class C addresses are used for small networks
     - The three high-order bits in a class C address are always set to binary 110.
-    - The defailt subnet mask is /24.
+    - The default subnet mask is /24.
     - Valid network addresses range from 192.0.0.0 to 223.255.255.0/24/
     - This allows for 2097152 networks and 254 hosts per network.
     
@@ -260,6 +260,13 @@ These reservations remove **33,554,432 addresses** from the usable global IPv4 a
     - The last 24 bits is vendor assigned.
     - The burned in MAC address on every NIC port in the world is globally unique.
     - Example - 00:50:56:C0:00:08
+
+### Data Link Sublayers
+    - IEEE 802 LAN/MAN protocols, including Ethernet, use the following two separate sublayers of the data link layer to operate. They are the Logical Link Control (LLC) and the Media         Access Control (MAC), as shown in the figure.
+
+    - Recall that LLC and MAC have the following roles in the data link layer:
+    1. LLC Sublayer - This IEEE 802.2 sublayer communicates between the networking software at the upper layers and the device hardware at the lower layers. It places information in the        frame that identifies which network layer protocol is being used for the frame. This information allows multiple Layer 3 protocols, such as IPv4 and IPv6, to use the same network        interface and media.
+    2. MAC Sublayer - This sublayer (IEEE 802.3, 802.11, or 802.15, for example) is implemented in hardware and is responsible for data encapsulation and media access control. It               provides data link layer addressing and is integrated with various physical layer technologies.
 
 ### Data link layer protocols include:
 
@@ -364,3 +371,21 @@ Standards:
     Common Uses: IP phones, wireless access points, security cameras, IoT devices, and network switches.
 
 
+### Frame Forwarding Methods on Cisco Switches
+    - Switches use one of the following forwarding methods for switching data between network ports:
+
+    1. Store-and-forward switching - This frame forwarding method receives the entire frame and computes the CRC. CRC --- In networking, a Cyclic Redundancy Check (CRC) is an     error-        detection method where a sender computes a fixed-length numerical value based on the data to be sent and appends it to the data. --- uses a mathematical formula, based on the            number of bits (1s) in the frame, to determine whether the received frame has an error. If the CRC is valid, the switch looks up the destination address, which determines the            outgoing interface. Then the frame is forwarded out of the correct port.
+    2. Cut-through switching - This frame forwarding method forwards the frame before it is entirely received. At a minimum, the destination address of the frame must be read before the        frame can be forwarded.
+       
+       A big advantage of store-and-forward switching is that it determines if a frame has errors before propagating the frame. When an error is detected in a frame, the switch discards        the frame. Discarding frames with errors reduces the amount of bandwidth consumed by corrupt data. Store-and-forward switching is required for quality of service (QoS) analysis          on converged networks, where frame classification for traffic prioritisation is necessary. For example, voice over IP (VoIP) data streams need to have priority over web-browsing         traffic.
+
+###    Cut-Through Switching
+
+       In cut-through switching, the switch acts upon the data as soon as it is received, even if the transmission is not complete. The switch buffers just enough of the frame to read          the destination MAC address so that it can determine to which port it should forward out the data. The destination MAC address is located in the first 6 bytes of the frame               following the preamble. The switch looks up the destination MAC address in its switching table, determines the outgoing interface port, and forwards the frame onto its                   destination through the designated switch port. The switch does not perform any error checking on the frame.
+
+        There are two variants of cut-through switching:
+
+     1. Fast-forward switching - Fast-forward switching offers the lowest level of latency. Fast-forward switching immediately forwards a packet after reading the destination address.         Because fast-forward switching starts forwarding before the entire packet has been received, there may be times when packets are relayed with errors. This occurs infrequently, and       the destination NIC discards the faulty packet upon receipt. In fast-forward mode, latency is measured from the first bit received to the first bit transmitted. Fast-forward             switching is the typical cut-through method of switching.
+    2. Fragment-free switching - In fragment-free switching, the switch stores the first 64 bytes of the frame before forwarding. Fragment-free switching can be viewed as a compromise          between store-and-forward switching and fast-forward switching. The reason fragment-free switching stores only the first 64 bytes of the frame is that most network errors and            collisions occur during the first 64 bytes. Fragment-free switching tries to enhance fast-forward switching by performing a small error check on the first 64 bytes of the frame          to ensure that a collision has not occurred before forwarding the frame. Fragment-free switching is a compromise between the high latency and high integrity of store-and-forward         switching, and the low latency and reduced integrity of fast-forward switching.
+
+###    Auto-MDIX - Auto-MDIX (Automatic Medium-Dependent Interface Crossover) is a network port feature that automatically detects the type of Ethernet cable (straight-through or crossover) being used and configures the connection appropriately, allowing users to connect devices without needing to worry about using the correct cable type. 
