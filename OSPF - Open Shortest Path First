@@ -104,3 +104,24 @@ OSPF ROUTER TYPES - NORMAL AREA ROUTERS
 
 OSPF Router Types - AUTONOMOUS SYSTEM BOUNDARY ROUTERS
   - Routers which redistribute into OSPF are AUTONOMOUS SYSTEM BOUNDARY ROUTERS
+
+BANDWIDTH vs CLOCK RATE and SPEED
+
+The SPEED command
+  - The rate that Ethernet interfaces physically transmit at is set by the 'speed' command
+  - GigabitEthernet interfaces transmit at 1000 Mbps by default
+  - FastEthernet interfaces transmit at 100 Mbps by default
+  - If you use the 'speed 10' command on a FastEthernet interface, it will physically transmit at 10 Mbps
+
+The CLOCK-RATE command
+  - The rate that Serial interfaces physically transmit at is set by the 'clock rate' command
+  - Serial interfaces transmit at 1.544 Mbps by default
+  - If you use the 'clock rate 64000' command on a Serial interface, it will physically transmit at 64 Kbps
+
+The BANDWIDTH command
+  - Interfaces also have a default bandwidth (eg 100 Mbps on FastEthernet interfaces, 1.544 Mbps on a serial interface)  
+  - The bandwidth usually matches the physical transmission rate of the interface 
+  - The 'bandwidth' setting on an interface does not affect the physical transmission rate - that is set by the 'speed' or 'clock rate'
+  - If you set a bandwidth of 50 Mbps on a FastEthernet interface, it will still transmit at 100 Mbps
+  - The bandwidth command affects software policy on the router, such as which path will be selected by EIGRP or OSPF, or how much bandwidth will be guaranteed to a traffic type by QoS
+  - You can influence software policy by setting the bandwidth on an interface
