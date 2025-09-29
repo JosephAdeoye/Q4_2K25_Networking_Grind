@@ -239,7 +239,27 @@ OSPF (Open Shortest Path First) packets have a well-defined header, followed by 
   Instead, the ABR (Area Border Router) injects a default route (0.0.0.0/0) into the stub area.
   👉 This means routers inside the stub just send "unknown" traffic to the ABR, instead of storing every possible external route.
 
+### Maximum Transmission Unit (MTU) Mismatches
+- If there is an MTU setting mismatch, then OSPF routers can become neighbours, but they will not exchange routes with each other
+- MTU is configured at the interface level (default 1500 bytes)
+- You can set the interface MTU (affects all packets) and/or interface IP MTU (affects only IP packets)
+----- MTU IS NOT AN OSPF SETTING. IT IS GENERALLY A SETTING ON THE ROUTER INTERFACE -----
+
+# OSPF Neighbour States
+
+OSPF routers form neighbour relationships to exchange routing information. The process goes through several states:
+
+| State          | Description                                                                 |
+|----------------|-----------------------------------------------------------------------------|
+| **Down**       | No Hello packets received yet. Neighbour is considered down.                 |
+| **Init**       | Router has received a Hello, but bidirectional communication not established.|
+| **2-Way**      | Bidirectional communication established (both routers see each other).      |
+| **ExStart**    | Routers decide who will be master/slave for Database Description (DBD) exchange. The highest Router ID is usually the master |
+| **Exchange**   | Routers exchange DBD packets describing their LSAs.                         |
+| **Loading**    | Routers request missing LSAs using Link State Requests (LSRs).              |
+| **Full**       | All LSAs are synchronized; adjacency fully established.                     |
+
+> 🔑 Note: Not all neighbours reach **Full** state (e.g., DROTHERs in multi-access networks may stay at **2-Way**).
 
 
-
-
+ 
