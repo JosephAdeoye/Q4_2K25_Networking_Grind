@@ -166,3 +166,54 @@ Manipulating the OSPF Metric
 A MANUALLY CONFIGURED OSPF COST OVERRIDES THE VALUE AUTOMATICALLY DERIVED FROM THE BANDWIDTH 
   - R1(config)# interface FastEthernet 0/0
   - R1(config-if)#ip ospf cost 50
+
+## OSPF Protocol and IP Header
+
+OSPF (Open Shortest Path First) is a **Layer 3 routing protocol** that runs directly over IP.  
+It does **not** use TCP or UDP for transport. Instead, OSPF packets are encapsulated directly inside IP packets.
+
+---
+
+### IP Header Fields Relevant to OSPF
+- **Protocol Field (8 bits)** → Identifies the Layer 4 protocol carried in the packet.  
+  - `6` → TCP  
+  - `17` → UDP  
+  - `89` → OSPF  
+
+Thus, when the **Protocol Number = 89**, the payload is recognised as an **OSPF packet**.
+
+## OSPF Packet Structure
+
+OSPF (Open Shortest Path First) packets have a well-defined header, followed by the actual data (depending on packet type).  
+
+---
+
+### 🔹 OSPF Packet Header Fields
+| Field              | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| **Version**        | Identifies OSPFv2 (IPv4) or OSPFv3 (IPv6).                                  |
+| **Type**           | Defines the OSPF packet type: <br> 1 = Hello <br> 2 = DBD (Database Descriptor) <br> 3 = LSR (Link State Request) <br> 4 = LSU (Link State Update) <br> 5 = LSAck (Link State Acknowledgment) |
+| **Packet Length**  | Total size of the OSPF packet in bytes.                                     |
+| **Router ID**      | Unique ID of the advertising router.                                        |
+| **Area ID**        | Identifies the OSPF area where the packet belongs.                          |
+| **Checksum**       | Ensures data integrity of the OSPF packet.                                  |
+| **Authentication Type** | 0 = None <br> 1 = Plain-text password <br> 2 = MD5 authentication       |
+| **Authentication** | The actual authentication data (if enabled).                               |
+| **Data**           | The OSPF-specific payload (depends on the packet type).                     |
+
+---
+
+### 🔹 OSPF Packet Types
+- **Hello (Type 1):** Used to establish and maintain neighbour relationships.  
+- **DBD (Type 2):** Database Descriptor; summarizes the LSAs a router has.  
+- **LSR (Type 3):** Link State Request; requests specific LSAs from neighbors.  
+- **LSU (Type 4):** Link State Update; contains LSAs to update the LSDB.  
+- **LSAck (Type 5):** Acknowledges receipt of LSAs.  
+
+---
+
+### 🔹 Visualization
+
+
+
+
