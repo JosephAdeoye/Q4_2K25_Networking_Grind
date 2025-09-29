@@ -212,7 +212,33 @@ OSPF (Open Shortest Path First) packets have a well-defined header, followed by 
 
 ---
 
-### 🔹 Visualization
+### Hello Packets
+- OSPF routers discover each other and form adjacencies via Hello packets
+- They send Hello packets out each interface where OSPF is enabled (except passive interfaces)
+- Multicast to 224.0.0.5 ('all OSPF routers')
+- Sent every 10 seconds by default
+
+### Hello Packets Contents
+- Router ID: 32-bit number that uniquely identifies each OSPF router (usually the loopback interface of the router if one exists)
+- Hello Interval: How often router sends Hello packets. Default 10 secs.
+- Dead Interval: How long a router waits to hear from a neighbour before declaring it out of service. Default 4x Hello Interval
+- Neighbours: A list of adjacent OSPF routers that this router has received a Hello packet from
+- Area ID: The area configured for that interface
+- Router Priority: An 8-bit number used to select DR and BDR
+- DR and BDR IPv4 Address: If known
+- Authentication Flag: Authentication details if configured (password for security)
+- Stub Area Flag: If the area is a stub area. Stub areas have a default route to their ABR rather than learning routes outside the area.
+  What is a Stub Area?
+
+  A stub area is a special type of OSPF area designed to reduce the size of the routing table and cut down on unnecessary LSA flooding.
+
+  Normally, an OSPF area learns all routes (internal + external routes).
+
+  In a stub area, external routes (from outside OSPF, like from BGP or redistributed static routes) are not advertised.
+
+  Instead, the ABR (Area Border Router) injects a default route (0.0.0.0/0) into the stub area.
+  👉 This means routers inside the stub just send "unknown" traffic to the ABR, instead of storing every possible external route.
+
 
 
 
