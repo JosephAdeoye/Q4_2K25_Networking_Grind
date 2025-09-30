@@ -261,5 +261,20 @@ OSPF routers form neighbour relationships to exchange routing information. The p
 
 > 🔑 Note: Not all neighbours reach **Full** state (e.g., DROTHERs in multi-access networks may stay at **2-Way**).
 
+### OSPF DR and BDR Designated Routers
+OSPF on Multiaccess Segments
+  - On point-to-point links, OSPF router pairs form a FULL adjacency
+  - On multiaccess segments (such as Ethernet) where there can be multiple routers, it is inefficient for all routers to form a FULL OSPF adjacency
+  - On multiaccess segments such as Ethernet, the routers elect the DR and BDR at the 2-Way stage
+  - There is no election on point-to-point links
 
- 
+DR and BDR
+- A DR Designated Router and BDR Backup Designated Router are elected 
+- The router with the highest priority becomes DR, and the router with the 2nd highest priority becomes BDR
+- Default priority is 1, the higher the better (0 - 255)
+- The highest Router ID is used in case of a tie
+
+Setting OSPF priority
+- R1(config)# interface FastEthernet 0/0
+- R1(config-if)# ip ospf priority 100
+*** You need to restart OSPF on an interface for the command to take effect
