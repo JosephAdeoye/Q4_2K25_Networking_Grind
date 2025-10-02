@@ -278,3 +278,6 @@ Setting OSPF priority
 - R1(config)# interface FastEthernet 0/0
 - R1(config-if)# ip ospf priority 100
 *** You need to restart OSPF on an interface for the command to take effect
+
+
+WILL BE BACK SHORTLY 
