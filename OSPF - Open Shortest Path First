@@ -269,15 +269,24 @@ OSPF on Multiaccess Segments
   - There is no election on point-to-point links
 
 DR and BDR
-- A DR Designated Router and BDR Backup Designated Router are elected 
+- A DR Designated Router and BDR Backup Designated Router are elected on each multi-access segment
 - The router with the highest priority becomes DR, and the router with the 2nd highest priority becomes BDR
 - Default priority is 1, the higher the better (0 - 255)
 - The highest Router ID is used in case of a tie
+
+Neighbour States - 2-way
+- On multiaccess segments such as Ethernet, the routers elect the DR and BDR at the 2-way stage
+- There is no election on point-to-point links
 
 Setting OSPF priority
 - R1(config)# interface FastEthernet 0/0
 - R1(config-if)# ip ospf priority 100
 *** You need to restart OSPF on an interface for the command to take effect
 
+Multiaccess Segment Neighbour States
+- The DR and BDR establish FULL neighbour state with all routers on the network segment
+- The neighbour state of other neighbours remains in 2-way, and they do not directly exchange routes with each other
 
-WILL BE BACK SHORTLY 
+Multiaccess Segment LSA Updates
+- When a link state changes on a router connected to a multiaccess segment, it sends a multicast LSU packet to 224.0.0.6 ('all designated routers')
+- The DR multicasts the update to 224.0.0.5 ('all OSPF routers')
