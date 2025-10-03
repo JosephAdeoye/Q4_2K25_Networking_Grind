@@ -1,1 +1,64 @@
+Access Control Lists
+- An ACL identifies traffic based on characteristics of the packet, such as source IP address, destination IP address, and port number
+- The router or switch can take an action based on the result of the ACL
+- ACLs are supported on both routers and switches.
+- The original use of ACLs was as a security feature to decide if traffic should be allowed to pass through the router
+- By default, a router will allow all traffic to pass between its interfaces
+- When ACLs are applied, the router identifies traffic and then decides if it will be allowed or not
+- ACLs are also used in other software policies when traffic has to be identified, for example:
+  - Identify traffic to translate to a different IP address in a NAT (Network Address Translation Policy)
+  - Identify traffic to give better service to in a QoS (Quality of Service) policy. E.g VoIP
+
+ACE Access Control Entries
+- Access Control Lists are made up of Access Control Entries, which are a series of permit or deny rules
+- Each ACE is written in a separate line
+
+# Access Control Entry (ACE) Example
+The following ACE denies certain TCP traffic based on source and destination criteria:
+
+----"R2(config)# access-list 100 deny tcp 10.10.30.0 0.0.0.255 gt 49151 10.10.20.1 0.0.0.0 eq 23"----
+
+
+### Breakdown of the ACE
+
+| **Field**       | **Value**         | **Explanation**                                                                 |
+|------------------|------------------|---------------------------------------------------------------------------------|
+| Access List No. | `100`            | Identifies the access list. Standard ACLs: 1–99, Extended ACLs: 100–199.        |
+| Action          | `deny`           | Specifies that matching traffic will be blocked.                                |
+| Protocol        | `tcp`            | This ACE applies only to TCP traffic.                                           |
+| Source IP       | `10.10.30.0`     | The source network address.                                                     |
+| Source Wildcard | `0.0.0.255`      | Wildcard mask (matches `10.10.30.0 – 10.10.30.255`).                            |
+| Source Port     | `gt 49151`       | Matches traffic from source ports greater than 49151.                           |
+| Destination IP  | `10.10.20.1`     | Specific destination host address.                                              |
+| Destination WC  | `0.0.0.0`        | Wildcard mask (matches exactly `10.10.20.1`).                                   |
+| Destination Port| `eq 23`          | Matches Telnet traffic (port 23).                                               |
+
+### What It Does
+This ACE **blocks Telnet (TCP/23) traffic** destined for host `10.10.20.1` if it comes from any device in the `10.10.30.0/24` subnet, **but only if the source port number is greater than 49151**.
+
+---
+
+✅ **Key takeaway:** Extended ACLs allow you to filter traffic with very fine control — by protocol, source/destination addresses, and port numbers.
+
+Original Implementation: Standard vs Extended ACLs
+- Standard ACLs reference the source address only
+- Extended ACLs provide finer control and checks based on the protocol, source address, destination address, and port number
+- Standard ACL Range: 1 - 99
+- Extended ACL Range: 100 - 199
+
+ACL Improvement: Expanded Ranges
+- Cisco expanded the original ACL Ranges
+- Standard: 1 - 99, 1300 - 1999
+- Extended: 100 - 199, 2000 - 2699
+
+Standard Access List Example
+- The default wildcard mask for a Standard ACL is 0.0.0.0, meaning an individual host address
+  R1 (config)# access-list 1 deny 10.10.10.10
+- Do not forget to enter the wildcard when specifying an IP subnet
+  R1 (config)# access-list 1 deny 10.10.10.0
+- There is no default wildcard mask for Extended ACLs
+
+ACL Improvement: Named ACLs
+- You can now reference ACLs by number or by name
+- Named ACLs begin with the command 'ip access-list' instead of 'access-list'
 
