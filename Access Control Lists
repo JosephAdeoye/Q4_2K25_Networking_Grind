@@ -62,3 +62,103 @@ ACL Improvement: Named ACLs
 - You can now reference ACLs by number or by name
 - Named ACLs begin with the command 'ip access-list' instead of 'access-list'
 
+# Access Control List (ACL) Syntax
+
+ACLs in Cisco IOS follow a structured syntax. There are two main types: **Standard ACLs** and **Extended ACLs**.
+
+## 1. Standard ACL Syntax
+- **`<number>`** – ACL number (1–99 for standard ACLs).  
+- **`permit | deny`** – Action to take.  
+- **`<source>`** – Source IP address.  
+- **`<wildcard-mask>`** – Wildcard mask to define range of addresses.  
+**Example:**
+access-list 10 deny 192.168.1.0 0.0.0.255
+
+## 2. Extended ACL Syntax
+- **`<number>`** – ACL number (100–199 for extended ACLs).  
+- **`<protocol>`** – IP, TCP, UDP, ICMP, etc.  
+- **`<source>` `<wildcard-mask>`** – Source IP and range.  
+- **`[operator port]`** – Optional (eq, gt, lt, neq). Matches specific ports.  
+- **`<destination>` `<wildcard-mask>`** – Destination IP and range.  
+- **`[operator port]`** – Optional port for destination traffic.  
+**Example:**
+access-list 101 deny tcp 10.10.30.0 0.0.0.255 gt 49151 10.10.20.1 0.0.0.0 eq 23
+
+## 3. Applying ACLs
+ACLs must be applied to an interface and direction:
+---
+interface <type> <number>
+ip access-group <acl-number> {in | out}
+---
+- **`in`** – Packets entering the interface are filtered.  
+- **`out`** – Packets leaving the interface are filtered.  
+**Example:**
+interface GigabitEthernet0/0
+ip access-group 101 in
+👉 Applies ACL 101 on incoming traffic.
+
+--- 
+
+✅ **Key Notes:**
+- ACLs are processed **top-down** (first match wins).  
+- There is an **implicit deny all** at the end of every ACL.  
+- Extended ACLs should be placed **close to the source**, while Standard ACLs should be placed **close to the destination**.
+
+---
+# ACL Operators Cheat Sheet
+
+ACL operators allow filtering traffic based on **TCP/UDP port numbers**.
+
+| Operator | Meaning                        | Example                    |
+|----------|--------------------------------|----------------------------|
+| `eq`     | Equal to (specific port)       | `eq 80` → Match HTTP       |
+| `neq`    | Not equal to                   | `neq 23` → Match all ports except Telnet |
+| `gt`     | Greater than                   | `gt 1023` → Match ephemeral (high) ports |
+| `lt`     | Less than                      | `lt 1024` → Match well-known ports |
+| `range`  | Inclusive range of ports       | `range 1000 2000` → Match ports 1000–2000 |
+
+---
+## Examples
+1. **Permit HTTP traffic to a web server:**
+access-list 110 permit tcp any host 192.168.1.10 eq 80
+
+2. **Deny Telnet traffic from 10.10.30.0/24 to 10.10.20.1:**
+access-list 120 deny tcp 10.10.30.0 0.0.0.255 host 10.10.20.1 eq 23
+
+3. **Permit traffic on all ports greater than 1023 (ephemeral ports):**
+access-list 130 permit tcp any any gt 1023
+
+---
+
+✅ **Tips:**
+- Use `eq` for specific services (e.g., 80 = HTTP, 443 = HTTPS, 23 = Telnet, 22 = SSH).  
+- Use `range` for multiple consecutive ports.  
+- Remember the **implicit deny all** at the end of ACLs.
+
+# Implicit Deny All in ACLs
+Every Access Control List (ACL) in Cisco IOS has an **invisible rule at the end**:
+
+This rule is **not shown** when you display the ACL, but it is **always there**.
+---
+## What It Means
+- If a packet does **not match any permit/deny statement you configured**, it will automatically be **denied**.  
+- This ensures that traffic is blocked unless you explicitly allow it.
+---
+## Example
+access-list 10 permit 192.168.1.0 0.0.0.255
+- ✅ Permits traffic from `192.168.1.0/24`.  
+- ❌ Any other traffic (e.g., `192.168.2.0/24`) does not match, so it is denied by the **implicit deny all**.  
+
+Result: Only `192.168.1.0/24` traffic is allowed; everything else is denied — even though you didn’t write "deny."
+---
+## Why Cisco Does This
+- **Secure by default** → traffic must be explicitly allowed.  
+- **Prevents mistakes** → no accidental access if you forget a rule.  
+- **Forces clarity** → you must decide exactly what traffic is permitted.  
+---
+✅ **In short:**  
+The **implicit deny all** is a hidden rule at the end of every ACL that blocks any packet not matching earlier rules.
+
+
+
+
