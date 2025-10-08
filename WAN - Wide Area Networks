@@ -1,1 +1,56 @@
+# LAN, WAN, and MAN
+
+Understanding the scope of different network types is fundamental in networking.  
+Below are the key distinctions between **LAN**, **WAN**, and **MAN**.
+
+---
+
+## 🏠 Local Area Network (LAN)
+A **Local Area Network (LAN)** connects computers and other devices within a **small geographical area**,  
+such as a single building, office, or campus.  
+
+- High-speed and low latency  
+- Privately owned and managed  
+- Common technologies: Ethernet, Wi-Fi  
+
+📘 **Example:**  
+A network connecting PCs and printers within an office building.
+
+---
+
+## 🌍 Wide Area Network (WAN)
+A **Wide Area Network (WAN)** spans a **large geographical area**, connecting multiple LANs.  
+It often uses **service provider infrastructure** to connect sites across cities, countries, or continents.  
+
+- Uses public or leased communication lines (e.g., MPLS, Internet, VPN)  
+- Requires routing and security control  
+
+📘 **Example:**  
+A multinational company linking branch offices across different regions through leased lines or VPN tunnels.
+
+---
+
+## 🏙️ Metropolitan Area Network (MAN)
+A **Metropolitan Area Network (MAN)** covers a **geographic area larger than a LAN but smaller than a WAN** —  
+typically a **city or metropolitan region**.  
+
+- Used to connect multiple LANs within the same city  
+- Often managed by ISPs or municipal entities  
+- Offers high-speed connectivity between local sites  
+
+📘 **Example:**  
+A university with multiple campuses across a city connected via fiber optic backbone.
+
+---
+
+### 🧩 Summary Table
+
+| Network Type | Typical Area Covered      | Ownership        | Example Use Case                   |
+|---------------|---------------------------|------------------|------------------------------------|
+| **LAN**       | Building or campus        | Private          | Office or school network           |
+| **MAN**       | City or metropolitan area | Private/Public   | Inter-campus connection            |
+| **WAN**       | Country or global region  | Public/Carrier   | Corporate network over the Internet |
+
+---
+💡 **Tip:** LANs form the foundation of all networking; WANs connect LANs, and MANs act as the bridge between the two.
 
