@@ -135,6 +135,9 @@ WAN Connectivity Options
 - They are  typically expensive and low-bandwidth
 - They may be the only option in hard-to-reach areas
 
-# MPLS (Multi Protocol Label Switching) VPN
+# MPLS (Multi-Protocol Label Switching) VPN
 - WAN connectivity can be provided over an MPLS infrastructure, usually operated by a service provider
-- Traffic f
+- Traffic from multiple customers can travel over the provider's shared MPLS network, so this is a VPN service
+- Different levels of SLA for uptime and traffic delay, and loss are often available at different price points
+- Ethernet connections are typically used to connect to the customer router
+- MPLS VPNs provide a full mesh topology by default
