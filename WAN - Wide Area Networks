@@ -79,3 +79,62 @@ Types of VPNs: Site-to-Site VPN and Remote Access VPN
 - DMVPN (Dynamic Multipoint VPN): Cisco proprietary. Scalable, simple hub and spoke style configuration enables direct full mesh connectivity between all offices
 - FlexVPN: Cisco proprietary. Very similar to DMVPN, a newer technology
 - GETVPN (Group Encrypted Transport VPN): Cisco proprietary. Scalable centralised policy for VPN over non-public infrastructure, eg MPLS.
+
+WAN Connectivity Options
+# Primary WAN Connectivity Options
+- Leased Line
+- MPLS -- Multi-Protocol Label Switching --
+- Satellite
+
+- The service provider will typically provide an SLA (Service Level Agreement) with guarantees for uptime and traffic delay and loss on the link
+
+# Optical Fiber
+- Optical fiber is more suitable for long distances than copper wire
+- It is commonly used for service provider backhaul connections, but can also be offered to their customers
+- FTTx services:
+  - Fiber to the Home
+  - Fiber to the Premises
+  - Fiber to the Building
+  - Fiber to the Neighborhood
+
+# DWDM Dense Wavelength Division Multiplexing
+- DWDM combines ('multiplexes') multiple optical signals into one optical signal transmitted over a single fiber strand
+- Each signal is assigned a different wavelength
+- DWDM allows more capacity to be added to existing infrastructure without expensive upgrades
+- DWDM is used in all modern long-haul optical connections
+
+#  WAN Backup and Small Office Solutions
+- Less expensive options, often aimed at home user internet access, can be used as Internet VPN WAN backup options in corporate environments
+- There will typically be no corporate-level SLA with these services
+- These can be used as the primary WAN connection method to the corporate network from smaller offices and for home users
+  - DSL Digital Subscriber Line
+  - Cable
+  - Wireless eg 4G
+
+# Leased Lines
+- A leased line is a dedicated physical connection between two locations
+- It has fixed, reserved bandwidth, which is not shared with anyone else
+- The same bandwidth is available in both directions
+- The company may own the cable infrastructure, but more commonly it is leased from a service provider for a monthly fee, hence the name 'leased line' 
+
+- The first location is typically a corporate office.
+- The second location is typically:
+  - Another corporate office, providing point-to-point connectivity between the two offices
+  - A data centre that's connected to the company's existing Wide Area Network, providing multipoint connectivity between offices
+  - A data centre that's connected to the internet, providing Internet connectivity, and optionally corporate office connectivity over internet VPN
+
+# Leased Lines Benefits and Drawbacks
+- Leased lines have fixed, reserved bandwidth, which is not shared with anyone else.
+- The service provider will typically provide an SLA (Service Level Agreement) with guarantees for uptime and traffic delay, and loss on the link
+- Leased lines are typically more expensive than the other options
+- There is usually a longer lead time for installation
+- Copper or Fiber Ethernet connectivity options to the CPE (Customer Premises Equipment) are becoming more common than serial leased lines.
+
+# Satellite
+- Satellite connections share the same characteristics as cabled leased lines 
+- They are  typically expensive and low-bandwidth
+- They may be the only option in hard-to-reach areas
+
+# MPLS (Multi Protocol Label Switching) VPN
+- WAN connectivity can be provided over an MPLS infrastructure, usually operated by a service provider
+- Traffic f
