@@ -141,3 +141,32 @@ WAN Connectivity Options
 - Different levels of SLA for uptime and traffic delay, and loss are often available at different price points
 - Ethernet connections are typically used to connect to the customer router
 - MPLS VPNs provide a full mesh topology by default
+
+# Layer3 MPLS VPN
+- MPLS runs across the provider's core on the PE and P routers
+- The customer CE routers do not run MPLS
+- The customer CE routers peer at Layer 3 with the provider PE routers
+- Static routes or a routing protocol run between the CE and PE
+- The PE router looks like another customer router to the customer
+- The provider's core routers are transparent to the customer 
+- The customer sites are in different IP subnets
+
+# Layer 2 MPLS VPN
+- The CE devices do not peer with the PE devices. The entire provider network is transparent to the customer
+- The provider network acts like a giant switch
+- The customer sites are in the same IP subnets
+
+# PPPoE Point to Point over Ethernet
+WAN Backup and Small Office Solutions
+- Less expensive options often aimed at home user internet access are often used as Internet VPN WAN backup options in corporate enviroments
+- These can also be used as the primary WAN connection method to the corporate network from smaller offices and for home users
+  - DSL Digital Subscriber Line
+  - Cable 
+  - Wireless, eg, 4G
+- There will typically be no corporate-level SLA with these services
+
+# SINGLE-HOMED VS DUAL HOMED VS MULTI HOMED
+- Single-homed means a single Internet Service Provider (ISP) connection, offering cost savings but no redundancy.
+- Dual-homed means two or more connections to the same ISP, providing redundancy at the host site. 
+- Multihomed means connecting to two or more different ISPs, offering high reliability, redundancy, and performance by providing alternative paths to the internet
+
