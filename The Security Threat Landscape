@@ -1,0 +1,50 @@
+# The Security Threat Landscape
+- Threat: has the potential to cause harm to an IT asset
+- Vulnerability: a weakness that compromises the security or functionality
+- Exploit: uses a weakness to compromise the security or functionality of a system
+- Risk: the likelihood of a successful attack
+- Mitigation: techniques to eliminate or reduce the potential of and seriousness of an attack
+
+MALWARE is malicious software, including:
+- Viruses:  software which inserts itself into other software and can spread from computer to computer. Requires human action to spread
+- Worms: a self-propagating virus that can replicate itself
+- Trojan horses: malicious software which looks legitimate to trick humans into triggering it. It often installs back doors
+- Ransomware: encrypts data with the attacker's key and asks the victim to pay a ransom to obtain the key
+
+COMMON ATTACKS
+
+# Reconnaissance (Information Gathering)
+
+**Reconnaissance** is the first phase of a cyber attack, where an attacker gathers as much information as possible about a target before attempting exploitation.
+
+---
+
+## 🔍 What Happens During Reconnaissance
+- The attacker collects **information about the intended victim**, such as domain names, IP addresses, or email patterns.  
+- The process can start with **unobtrusive, open-source methods** (known as *passive reconnaissance*):
+  - Searching public **WHOIS records**
+  - Checking **job listings**, **phone directories**, or **company websites**
+  - Reviewing social media and public documents  
+
+- Once enough surface data is gathered, the attacker moves into **active reconnaissance**, using tools and scans to probe deeper:
+  - **Ping sweeps** – to identify live hosts  
+  - **Port scans** – to discover open or vulnerable services  
+  - **Vulnerability scanners** – to identify exploitable weaknesses  
+
+---
+
+## ⚙️ Types of Reconnaissance
+
+| Type | Description | Example Tools |
+|------|--------------|----------------|
+| **Passive** | Gathers info without directly interacting with the target | WHOIS lookup, Google Dorking |
+| **Active** | Directly interacts with target systems to collect data | Nmap, Netcat, Nessus |
+
+---
+
+##  Key Insight
+Reconnaissance is essentially the **planning phase of a cyber attack**.  
+The more information an attacker collects, the easier it becomes to find weaknesses and plan successful intrusions.
+
+---
+
