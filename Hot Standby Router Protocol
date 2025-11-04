@@ -17,3 +17,21 @@ Static route: 1
 2. Virtual Router Redundancy Protocol (VRRP): Open Standard. Deployed in active/standby pair. Very similar to HSRP.
 3. Gateway Load Balancing Protocol (GLBP): Cisco proprietary. Supports active/active load balancing across multiple routers
 
+HSRP Operations
+1. Both routers have a normal physical IP address and MAC address on their HSRP interface. Unique addresses are used on both routers
+2. They both also have the HSRP virtual IP and MAC address configured on the interface. The same addresses are used on both routers.
+3. When they come online, one is elected the HSRP active router, the other is the standby
+4. The active router owns the virtual IP and MAC address and responds to ARP requests
+5. All traffic for the VIP goes through the active router
+6. The routers send hello messages to each other over their HSRP interface
+7. If the standby router stops receiving hellos from the active it will transition to be the active router
+8. It will take ownership of the virtual IP and MAC address and respond to ARP requests.
+9. The higher IP address between the routers is selected as ACTIVE by default
+
+HSRP Priority and Pre-emption
+1. You can choose which router will be the active by setting priority on the routers
+2. The router with the higher priority will be preferred (default is 100)
+3. In the event of a tie the highest IP address wins
+4. If pre-emption is also enabled, when a higher priority router comes back online after a failure it will transition back to active
+5. If pre-emption is not enabled(default), the lower priority router will remain active when the failed router comes back online
+6. This can be more stable if a higher priority router is flapping
