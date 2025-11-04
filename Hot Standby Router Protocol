@@ -1,0 +1,19 @@
+The Administrative distance of a Directly Connected route is 0
+The Administrative distance of a Static route is 1
+
+Administrative Distance is a metric used by routers to rank the trustworthiness of different routing information sources when multiple routing protocols provide routes to the same destination.
+The protocol with the lower AD is considered more reliable and is preferred. AD is an integer value from 0 to 255.
+
+Common default AD values
+Connected interface: 0
+Static route: 1
+
+- FIRST HOP REDUNDANCY PROTOCOLS use a Virtual IP and MAC address to allow for automated gateway failover. For example, if we have two routers, that we want to configure redundancy for, the two routers can have FHRP configured on them and they would negotiate the Virtual IP amongst themselves.
+- The hosts use the VIP as their default gateway address
+- If a physical gateway fails, another gateway will take over
+
+- FIRST HOP REDUNDANCY PROTOCOLS
+1. Hot Standby Router Protocol (HSRP): Cisco proprietary. Deployed in active/standby pair.
+2. Virtual Router Redundancy Protocol (VRRP): Open Standard. Deployed in active/standby pair. Very similar to HSRP.
+3. Gateway Load Balancing Protocol (GLBP): Cisco proprietary. Supports active/active load balancing across multiple routers
+
