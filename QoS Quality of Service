@@ -49,3 +49,23 @@ Layer 3 Marking - DSCP
 Quality Requiremments for Voice and Video
 - Voice and video endpoints mark their own traffic with a DSCP value
 - If you want to give a particular quality of service to another application running between a workstation and a server, the endpoints will typically be unable to mark their own traffic
+
+Congestion Management
+- Queuing can be used to manage congestion on routers and switches
+- CBWFQ (Class Based Weighted Fair Queing) gives bandwidth guarantees to specified traffic types
+- LLQ (Low Latency Queuing) is CBWFQ with a priority queue
+- Traffic in the priority queue is sent before other traffic
+
+Shaping and Policing
+- Traffic shaping and policing can be used to control traffic rate.
+- They both measure the rate of traffic through an interface and take an action if the rate is above a configured limit.
+- Traffic shaping buffers any excess traffic so the overall traffic stays withing the desired rate limit
+- Traffic policing drops or remarks excess traffic to enforce the specified rate limit
+- Classification can be used to allow different rates for different traffic types
+- TRAFFIC SHAPING IS USUALLY USED AT THE CUSTOMER SIDE OF THE LINK AND POLICING IS USED ON THE OTHER SIDE ON THE SERVICE PROVIDER
+
+Policing within Enterprises
+- Another use case for policing is worm and junk traffic mitigation
+- An enterprise can configure classification and marking to recogise worms, and junk traffic like peer to peer file sharing applications
+- This is known as 'Scanvenger' traffic. The recommended DSCP value to mark it with is DSCP 8 (CS1)
+- Policing can be used to rate limit junk traffic down to prevent it from taking bandwidth from business applications.
