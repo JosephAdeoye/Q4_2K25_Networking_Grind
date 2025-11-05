@@ -28,3 +28,24 @@ Effects of QoS Queuing
 - If you are giving one type of traffic better service on the same link you started with, the other traffic types must get worse service
 - The point is to give each type of traffic the service it requires
 - QoS queuing is not a magic bullet and is designed to mitigate temporary periods of congestion. If a link is permanently congested, the bandwidth should be increased. 
+
+Classification and Marking 
+- For a router or switch to give a particular level of service to a type of traffic, it has to recognise that traffic first
+- Common ways to recognise the traffic are by COS (Class of Service) marking, DSCP (Differentiated Service Code Point) marking, an Access Control List, or NBAR (Network Based Application Recognition)
+
+Layer 2 Marking - CoS Class of Service
+- There is a 3 bit field in the Layer 2 802.1q frame header which is used to carry the CoS QoS marking
+- A value of 0 - 7 can be set. The default value is 0 which is designated as Best Effort traffic
+- CoS 6 and 7 are reserved for network use
+- IP phones mark their call signalling traffic as CoS 3 and their voice payload as CoS 5.
+- The higher the CoS marking, the higher the priority
+
+Layer 3 Marking - DSCP
+- The ToS Type of Service byte in the Layer 3 IP header is used to carry the DSCP QoS marking
+- 6 bits are used which gives 64 possible values. The default value is 0 which is designated as Best Effort (BE) traffic
+- IP phones mark their call signalling traffic as 24 (CS3) and their voice payload as 46 (EF)
+- These are standard markings for other traffic types, such as 26 (AF31) for mission critical data, and 34 (AF41) for Standard Definition - SD video
+
+Quality Requiremments for Voice and Video
+- Voice and video endpoints mark their own traffic with a DSCP value
+- If you want to give a particular quality of service to another application running between a workstation and a server, the endpoints will typically be unable to mark their own traffic
