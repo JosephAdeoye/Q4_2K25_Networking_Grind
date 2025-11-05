@@ -1,0 +1,30 @@
+Traditional vs Converged Networks
+- On old traditional networks, data, voice and video had their own separate network infrastructure and did not impact each other
+- On modern networks, data, voice and video run over the same shared infrastructure
+- This enables cost savings and advanced features for voice and video
+- Data, voice and video are all fighting for the same shared bandwidth
+
+Quality Requirements for Voice and Video
+- Voice and traditional standard definition video packets must meet these recommended requirements to be an acceptable quality call:
+  1. Latency (delay) < 150 ms
+  2. Jitter (variation in delay) < 30 ms
+  3. Loss < 1%
+- These are one way requirements, meaning a packet sent from a phone in HQ has 150ms to reach the phone in the branch, and vice versa
+- HD video has stricter requirements
+
+Effects of Congestion
+- Congestion causes delay to packets as they wait in the queue
+- As the size of the queue changes it causes jitter
+- There is a limit to the size of the queue. If a packet arrives when the queue is full the router will drop it
+- Voice and video calls (and applications) will be unacceptable quality if they do not meet their delay, jitter and loss requirements
+
+How to Mitigate Congestion
+- Add more bandwidth (this costs money)
+- Use Quality of Service techniques to give better service to the traffic which needs it
+
+Effects of QoS Queuing
+- QoS queing can reduce latency, jitter and loss for particular traffic
+- The original driver for QoS was Voice over IP but it can also be used to give better service to data applications
+- If you are giving one type of traffic better service on the same link you started with, the other traffic types must get worse service
+- The point is to give each type of traffic the service it requires
+- QoS queuing is not a magic bullet and is designed to mitigate temporary periods of congestion. If a link is permanently congested, the bandwidth should be increased. 
