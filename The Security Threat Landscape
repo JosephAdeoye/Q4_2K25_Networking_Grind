@@ -48,3 +48,29 @@ The more information an attacker collects, the easier it becomes to find weaknes
 
 ---
 
+Social Engineering
+- Social Engineering is the use of deception to manipulate individuals into divulging confidential or personal information.
+- It typically involves nothing more technical than the use of a telephone or email.
+- The attacker will often pretend to be somebody else to trick the victim
+
+Phising
+- Phishing is a Social Engineering attack where the attacker pretends to be from a reputable company to get individuals to reveal personal information, such as passwords and credit card numbers.
+- The victim is often directed to enter their details into the attacker's website which looks like the reputable company's legitimate website.
+
+Data Exfiltration
+- Data exfiltration is where data leaves an organisation without authorisation.
+- This can be by a hacker who has comprimised a system
+- Or by an internal staff member, either maliciously or by accident 
+
+DoS Denial of Service 
+- A Denial of Service (DoS) attack prevents legitimate users from accessing an IT resource.
+- It is typically a brute force style of attack which floods the target system with more traffic than it can handle.
+- DoS attacks from a single source can easily be stopped by blocking traffic from that host
+
+DDoS Distributed Denial of Service 
+- A Distributed Denial of Service (DDoS) attack is a DoS attack from multiple sources.
+- The attacker builds and controls a botnet army of infected zombie hosts.
+- The botnet is built through malware such as worms and trojan horses.
+- Infected hosts connect out to the attacker's commaand and control server. This circumvents firewalls because the connecion is initiated from the inside
+- The attacker now has control of the botnet to launch attacks
+- DDoD attacks are more difficult to mitigate against because the attack comes from multiple sources which could normally be expected to send legitimate traffic
